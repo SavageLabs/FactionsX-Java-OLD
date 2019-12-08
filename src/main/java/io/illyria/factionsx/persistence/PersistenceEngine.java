@@ -1,8 +1,6 @@
 package io.illyria.factionsx.persistence;
-import io.illyria.factionsx.core.FPlayer;
-import io.illyria.factionsx.core.MemoryFPlayer;
+import io.illyria.factionsx.FPlayer;
 import io.illyria.factionsx.persistence.json.JSON;
-import io.illyria.factionsx.persistence.json.JSONPlayer;
 
 public class PersistenceEngine {
     //GETTING FROM CONFIG
@@ -28,7 +26,7 @@ public class PersistenceEngine {
         return persistenceEngine;
     }
 
-    public void setFPlayerPersistence(JSONPlayer fPlayerPersistence) {
+    public void setFPlayerPersistence(Persistence<FPlayer> fPlayerPersistence) {
         this.fPlayerPersistence = this.fPlayerPersistence == null ? fPlayerPersistence : this.fPlayerPersistence;
     }
 

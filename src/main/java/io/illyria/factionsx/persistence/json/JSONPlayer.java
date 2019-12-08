@@ -1,7 +1,6 @@
 package io.illyria.factionsx.persistence.json;
 
-import io.illyria.factionsx.core.FPlayer;
-import io.illyria.factionsx.core.MemoryFPlayer;
+import io.illyria.factionsx.FPlayer;
 import io.illyria.factionsx.persistence.Persistence;
 
 import java.util.Optional;
