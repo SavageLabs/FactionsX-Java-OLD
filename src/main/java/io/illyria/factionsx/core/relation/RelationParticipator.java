@@ -13,8 +13,6 @@ public interface RelationParticipator {
 
     Map<RelationParticipator, Relation> getRelationsWish();
 
-    void setRelationWish(RelationParticipator relationParticipator, Relation relation);
-
     Relation getRelationTo(RelationParticipator relationParticipator);
 
     Set<RelationParticipator> getFactionsWithRelation(Relation relation);

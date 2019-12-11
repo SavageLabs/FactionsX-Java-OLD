@@ -1,5 +1,5 @@
 package io.illyria.factionsx.persistence;
-import io.illyria.factionsx.entity.FPlayer;
+import io.illyria.factionsx.entity.IFPlayer;
 import io.illyria.factionsx.persistence.json.JSON;
 
 public class PersistenceEngine {
@@ -8,7 +8,7 @@ public class PersistenceEngine {
 
     private Dispatcher dispatcher;
 
-    private Persistence<FPlayer> fPlayerPersistence;
+    private Persistence<IFPlayer> fPlayerPersistence;
 
     private PersistenceEngine(PersistenceType persistenceType){
         switch (persistenceType) {
@@ -26,15 +26,15 @@ public class PersistenceEngine {
         return persistenceEngine;
     }
 
-    public void setFPlayerPersistence(Persistence<FPlayer> fPlayerPersistence) {
+    public void setFPlayerPersistence(Persistence<IFPlayer> fPlayerPersistence) {
         this.fPlayerPersistence = this.fPlayerPersistence == null ? fPlayerPersistence : this.fPlayerPersistence;
     }
 
-    protected Persistence<FPlayer> getfPlayerPersistence() {
+    public Persistence<IFPlayer> getfPlayerPersistence() {
         return fPlayerPersistence;
     }
 
-    protected Dispatcher getDispatcher() {
+    public Dispatcher getDispatcher() {
         return dispatcher;
     }
 
