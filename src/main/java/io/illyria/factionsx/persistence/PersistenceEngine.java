@@ -1,5 +1,5 @@
 package io.illyria.factionsx.persistence;
-import io.illyria.factionsx.FPlayer;
+import io.illyria.factionsx.entity.FPlayer;
 import io.illyria.factionsx.persistence.json.JSON;
 
 public class PersistenceEngine {
