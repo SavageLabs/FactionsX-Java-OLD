@@ -56,7 +56,7 @@ public interface IFaction extends RelationParticipator {
 
     void invitePlayer(IFPlayer player);
 
-    void deinvitePlayer(IFPlayer player);
+    void uninvitePlayer(IFPlayer player);
 
     Set<IFPlayer> getInvites();
 

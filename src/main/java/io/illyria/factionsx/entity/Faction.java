@@ -144,7 +144,7 @@ public class Faction implements IFaction {
     }
 
     @Override
-    public void deinvitePlayer(IFPlayer player) {
+    public void uninvitePlayer(IFPlayer player) {
         this.invites.remove(player);
     }
 
