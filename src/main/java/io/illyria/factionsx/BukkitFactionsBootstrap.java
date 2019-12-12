@@ -5,6 +5,7 @@ import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.config.file.ConfigManager;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
+import io.illyria.factionsx.utils.hooks.Econ;
 import io.illyria.factionsx.utils.hooks.PlaceholderAPIHook;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -88,6 +89,17 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
             // PlaceholderAPI hook - adds placeholders
             if (checkHook("PlaceholderAPI")) {
                 new PlaceholderAPIHook(this).register();
+            }
+
+            // Economy Hook (Vault), try to hook even if the Econ is disabled in config
+            // so that if the user enables it after the plugin is loaded, it will work
+            // without restarting the server.
+            if (checkHook("Vault")) {
+                if (!Econ.setup(this)) {
+                    enabledHooks.remove("Vault");
+                    if (Config.USE_ECONOMY.getBoolean() || Config.DEBUG.getBoolean())
+                        ChatUtil.error(Message.ERROR_ECON_INVALID.getMessage());
+                }
             }
 
         }, 2);

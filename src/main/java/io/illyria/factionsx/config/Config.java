@@ -14,6 +14,7 @@ public enum Config {
             "world2"
     }),
 
+    USE_ECONOMY("GeneralSettings.use-economy", true),
     USE_PARTICLES("GeneralSettings.use-particles", true),
     USE_HOLOGRAMS("GeneralSettings.use-holograms", true),
     USE_ANIMATIONS("GeneralSettings.use-animations", true),

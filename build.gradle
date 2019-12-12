@@ -16,11 +16,14 @@ repositories {
     maven { url 'http://repo.extendedclip.com/content/repositories/placeholderapi/' }
     // JSON Message
     maven { url 'https://rayzr.dev/repo/'}
+    // Vault
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compileOnly 'me.clip:placeholderapi:2.10.4'
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
     compileOnly('org.spigotmc:spigot-api:1.15-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5', module: 'bungeecord-chat'
         exclude group: 'javax.persistence', module: 'persistence-api'

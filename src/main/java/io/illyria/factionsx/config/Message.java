@@ -16,8 +16,10 @@ public enum Message {
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
     ERROR_HOOK_FAILED("Message.failed-to-hook", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),
+    ERROR_ECON_INVALID("Message.economy-hook-failed", "&7[&4✕&7] &cEconomy support has been disabled! Error while hooking to Vault, or no Economy Service was found!"),
 
     PAPI_ERROR("Placeholder.error","&c&oerror"),
+
 
     TIME_DAYS("Time.days", "days"),
     TIME_DAY("Time.day", "day"),
