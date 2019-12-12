@@ -13,6 +13,10 @@ public enum Message {
 
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig Reloaded!"),
 
+    ERROR_HOOK_FAILED("Message.failed-to-hook", "&7[&4✕&7] &cCould not hook to %plugin%. %plugin% support is disabled"),
+
+    PAPI_ERROR("Placeholder.error","&c&oerror"),
+
     TIME_DAYS("Time.days", "days"),
     TIME_DAY("Time.day", "day"),
     TIME_HOURS("Time.hours", "hours"),
