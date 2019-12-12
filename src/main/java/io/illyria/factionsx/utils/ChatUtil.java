@@ -2,12 +2,28 @@ package io.illyria.factionsx.utils;
 
 import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.config.Config;
+import io.illyria.factionsx.config.Message;
 import me.rayzr522.jsonmessage.JSONMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import javax.annotation.Nullable;
+
+/**
+ * Methods related to messages, actionbars, titles et similia.
+ * Anything related to sending text feedback should be here.
+ */
+
 public class ChatUtil {
+
+    // Color messages
+
+    public static String color(String str) {
+        return ChatColor.translateAlternateColorCodes('&', str);
+    }
+
+    // Console Feedback messages
 
     public static void sendConsole(String str) {
         Bukkit.getConsoleSender().sendMessage(color(str));
@@ -15,29 +31,51 @@ public class ChatUtil {
 
     public static void debug(String str) {
         if (Config.DEBUG.getBoolean())
-            Bukkit.getConsoleSender().sendMessage(color(str));
+            Bukkit.getConsoleSender().sendMessage(color(Message.PREFIX_DEBUG.getMessage() + str));
     }
 
-    public static String color(String str) {
-        return ChatColor.translateAlternateColorCodes('&', str);
+    public static void error(String str) {
+        Bukkit.getConsoleSender().sendMessage(color(Message.PREFIX_ERROR.getMessage() + str));
     }
 
+    // Send Title only
+
+    public static void sendTitle(Player[] player, String title, int fadeIn, int stay, int fadeOut) {
+        sendTitle(player, title, "", fadeIn, stay, fadeOut);
+    }
+
+    public static void sendTitle(Player[] player, String title) {
+        sendTitle(player, title, 10, 20, 10);
+    }
+
+    // Send Subtitle only
+
+    public static void sendSubtitle(Player[] player, String subtitle, int fadeIn, int stay, int fadeOut) {
+        sendTitle(player, "", subtitle, fadeIn, stay, fadeOut);
+    }
+
+    public static void sendSubtitle(Player[] player, String subtitle) {
+        sendSubtitle(player, subtitle, 10, 20, 10);
+    }
+
+    // Send full Title+Subtitle
+
+    public static void sendTitle(Player[] player, @Nullable String title, @Nullable String subtitle, int fadeIn, int stay, int fadeOut) {
+        JSONMessage.create(color(title != null ? title : ""))
+                .title(fadeIn, stay, fadeOut, player);
+        if (subtitle != null && subtitle.length() > 0) {
+            JSONMessage.create(color(subtitle))
+                    .subtitle(player);
+        }
+    }
 
     // Send normal ActionBar
-
-    public static void sendActionBar(Player player, String message) {
-        sendActionBar(player, message);
-    }
 
     public static void sendActionBar(Player[] players, String message) {
         JSONMessage.actionbar(color(message), players);
     }
 
     // Send ActionBar with duration
-
-    public static void sendActionBar(Player player, String message, int duration) {
-        sendActionBar(player, message, duration);
-    }
 
     public static void sendActionBar(Player[] players, String message, int duration) {
         sendActionBar(players, message);

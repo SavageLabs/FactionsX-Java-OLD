@@ -6,12 +6,14 @@ import java.util.List;
 
 public enum Message {
 
-    PREFIX("Command.prefix", "&4&lFactionsX &f➤ "),
+    PREFIX("General.prefix", "&4&lFactionsX &f➤ "),
+    PREFIX_DEBUG("General.prefix-debug", "&7[FactionsX] &e<DEBUG> "),
+    PREFIX_ERROR("General.prefix-error", "&7[FactionsX] &c<ERROR> "),
 
     GENERAL_NOPERMISSION("General.no-permission", "&7[&4✕&7] &cYou don't have permissions!"),
     GENERAL_NOPERMISSION_SPECIFIC("General.no-permission-specific", "&7[&4✕&7] &cYou must have the permission &e{perm}&c in order to do this!"),
 
-    CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig Reloaded!"),
+    CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
     ERROR_HOOK_FAILED("Message.failed-to-hook", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),
 
