@@ -1,8 +1,7 @@
 package io.illyria.factionsx.manager;
 
-import io.illyria.factionsx.entity.Faction;
 import io.illyria.factionsx.entity.IFPlayer;
-import io.illyria.factionsx.entity.IFaction;
+import io.illyria.factionsx.persistence.Persistence;
 import io.illyria.factionsx.persistence.PersistenceEngine;
 
 import java.util.HashSet;
@@ -10,10 +9,20 @@ import java.util.Set;
 
 public class PlayerManager {
 
-    private Set<IFPlayer> fPlayers;
+    private static PlayerManager playerManager;
 
-    public PlayerManager() {
+    private Set<IFPlayer> fPlayers;
+    private Persistence<IFPlayer> playerPersistence = PersistenceEngine.getInstance().getfPlayerPersistence();
+
+    private PlayerManager() {
         fPlayers = new HashSet<>();
+    }
+
+    public static PlayerManager getInstance() {
+        if (playerManager == null) {
+            playerManager = new PlayerManager();
+        }
+        return playerManager;
     }
 
     public Set<IFPlayer> getFPlayers() {
@@ -43,21 +52,15 @@ public class PlayerManager {
     }
 
     public void loadPlayers() {
-        fPlayers = PersistenceEngine.getInstance().getfPlayerPersistence().getAll();
+        fPlayers = playerPersistence.getAll();
     }
 
     public void savePlayers() {
-        PersistenceEngine.getInstance().getfPlayerPersistence().saveAll();
+        playerPersistence.saveAll();
     }
 
     public void savePlayer(IFPlayer player) {
-        PersistenceEngine.getInstance().getfPlayerPersistence().save(player);
+        playerPersistence.save(player);
     }
-
-
-    public void createFaction(String factionName, String ownerName) {
-        IFaction faction = new Faction(factionName, ownerName);
-    }
-
 
 }

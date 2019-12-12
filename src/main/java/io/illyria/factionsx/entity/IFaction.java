@@ -3,7 +3,6 @@ package io.illyria.factionsx.entity;
 import io.illyria.factionsx.core.relation.RelationParticipator;
 import io.illyria.factionsx.core.Role;
 
-import java.util.Date;
 import java.util.Set;
 
 public interface IFaction extends RelationParticipator {
