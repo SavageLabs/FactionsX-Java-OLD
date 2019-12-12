@@ -1,6 +1,6 @@
 package io.illyria.factionsx.config.file;
 
-import io.illyria.factionsx.BukkitFactionsBootstrap;
+import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.config.file.types.ConfigFile;
 import io.illyria.factionsx.config.file.types.MessageFile;
 import io.illyria.factionsx.internal.FactionsBootstrap;
@@ -10,13 +10,22 @@ import java.util.Map;
 
 public class ConfigManager {
 
-    private FactionsBootstrap plugin;
+    private static ConfigManager configManager;
+    private static FactionsBootstrap plugin;
+
     private static Map<String, CustomFile> fileMap = new HashMap<>();
 
-    public ConfigManager(FactionsBootstrap plugin) {
+    private ConfigManager(FactionsBootstrap plugin) {
         this.plugin = plugin;
         addFile(new MessageFile(plugin));
         addFile(new ConfigFile(plugin));
+    }
+
+    public static ConfigManager getInstance() {
+        if (configManager == null) {
+            configManager = new ConfigManager(FactionsX.getFactionsX().getFactionsBootstrap());
+        }
+        return configManager;
     }
 
     private void addFile(CustomFile file) {
@@ -24,7 +33,7 @@ public class ConfigManager {
         file.init();
     }
 
-    public static Map<String, CustomFile> getFileMap() {
+    public Map<String, CustomFile> getFileMap() {
         return fileMap;
     }
 

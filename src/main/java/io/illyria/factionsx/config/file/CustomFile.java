@@ -1,6 +1,5 @@
 package io.illyria.factionsx.config.file;
 
-import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import org.bukkit.configuration.file.YamlConfiguration;
 

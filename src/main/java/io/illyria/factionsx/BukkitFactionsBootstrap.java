@@ -2,7 +2,6 @@ package io.illyria.factionsx;
 
 import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.Message;
-import io.illyria.factionsx.config.file.ConfigManager;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
 import io.illyria.factionsx.utils.hooks.Econ;
@@ -30,7 +29,6 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
     @Override
     public void onEnable() {
         bukkitFactionsBootstrap = this;
-        initConfig();
         loadConfig();
         loadHooks();
         factionsX.enable();
@@ -61,24 +59,15 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
 
     }
 
-
-    public Set<String> getEnabledHooks() {
-        return enabledHooks;
-    }
-
-    private ConfigManager configManager;
-
-    public ConfigManager getConfigManager() {
-        return configManager;
-    }
-
-    private void initConfig() {
-        this.configManager = new ConfigManager(this);
-    }
-
     public void loadConfig() {
-        configManager.getFileMap().get("config").init();
-        configManager.getFileMap().get("messages").init();
+        factionsX.getConfigManager().getFileMap().get("config").init();
+        factionsX.getConfigManager().getFileMap().get("messages").init();
+    }
+
+    private void registerListeners(Listener... listeners) {
+        for (Listener listener : listeners) {
+            getServer().getPluginManager().registerEvents(listener, bukkitFactionsBootstrap);
+        }
     }
 
     public void loadHooks() {
@@ -111,12 +100,6 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
         }, 2);
     }
 
-    private void registerListeners(Listener... listeners) {
-        for (Listener listener : listeners) {
-            getServer().getPluginManager().registerEvents(listener, bukkitFactionsBootstrap);
-        }
-    }
-
     private boolean checkHook(String pluginName) {
         if (Bukkit.getPluginManager().isPluginEnabled(pluginName)) {
             enabledHooks.add(pluginName);
@@ -125,6 +108,10 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
             ChatUtil.debug(Message.ERROR_HOOK_FAILED.getMessage().replace("{plugin}", pluginName));
         }
         return false;
+    }
+
+    public Set<String> getEnabledHooks() {
+        return enabledHooks;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package io.illyria.factionsx;
 
+import io.illyria.factionsx.config.Config;
+import io.illyria.factionsx.config.file.ConfigManager;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.manager.FactionManager;
 import io.illyria.factionsx.manager.PlayerManager;
@@ -20,6 +22,7 @@ public class FactionsX {
 
     private PlayerManager playerManager;
     private FactionManager factionManager;
+    private ConfigManager configManager;
 
     public FactionsX(FactionsBootstrap factionsBootstrap) {
         this.factionsBootstrap = factionsBootstrap;
@@ -30,6 +33,7 @@ public class FactionsX {
         persistenceEngine = PersistenceEngine.getInstance();
         playerManager = PlayerManager.getInstance();
         factionManager = FactionManager.getInstance();
+        configManager = ConfigManager.getInstance();
     }
 
     public void disable() {
@@ -53,6 +57,10 @@ public class FactionsX {
 
     public static FactionsX getFactionsX() {
         return factionsX;
+    }
+
+    public ConfigManager getConfigManager() {
+        return configManager;
     }
 }
 

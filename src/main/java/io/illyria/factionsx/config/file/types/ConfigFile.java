@@ -1,6 +1,5 @@
 package io.illyria.factionsx.config.file.types;
 
-import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.file.CustomFile;
 import io.illyria.factionsx.internal.FactionsBootstrap;
