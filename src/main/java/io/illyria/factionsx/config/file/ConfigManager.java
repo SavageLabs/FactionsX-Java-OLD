@@ -11,7 +11,7 @@ import java.util.Map;
 public class ConfigManager {
 
     private static ConfigManager configManager;
-    private static FactionsBootstrap plugin;
+    private FactionsBootstrap plugin;
 
     private static Map<String, CustomFile> fileMap = new HashMap<>();
 

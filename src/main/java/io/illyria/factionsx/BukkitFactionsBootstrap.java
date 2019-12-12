@@ -5,6 +5,7 @@ import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
 import io.illyria.factionsx.utils.hooks.Econ;
+import io.illyria.factionsx.utils.hooks.HookManager;
 import io.illyria.factionsx.utils.hooks.PlaceholderAPIHook;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -24,13 +25,14 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
     private static BukkitFactionsBootstrap bukkitFactionsBootstrap;
     private FactionsX factionsX = new FactionsX(this);
 
-    private Set<String> enabledHooks = new HashSet<>();
+    private HookManager hookManager;
 
     @Override
     public void onEnable() {
         bukkitFactionsBootstrap = this;
+        hookManager = HookManager.getInstance();
+        hookManager.loadHooks();
         loadConfig();
-        loadHooks();
         factionsX.enable();
     }
 
@@ -39,13 +41,13 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
         // Cancel running Tasks, so that it should be PlugMan-safe
         Bukkit.getServer().getScheduler().cancelTasks(this);
         // Unregister PAPI, so that it should be PlugMan-safe
-        if (enabledHooks.contains("PlaceholderAPI")) {
+        if (hookManager.getEnabledHooks().contains("PlaceholderAPI")) {
             PlaceholderAPIHook.unreg();
         }
         // Set the saved instance to null, saving memory
         bukkitFactionsBootstrap = null;
         // Clearing the enabledHooks list
-        enabledHooks.clear();
+        hookManager.getEnabledHooks().clear();
         factionsX.disable();
     }
 
@@ -68,50 +70,6 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
         for (Listener listener : listeners) {
             getServer().getPluginManager().registerEvents(listener, bukkitFactionsBootstrap);
         }
-    }
-
-    public void loadHooks() {
-        Bukkit.getScheduler().runTaskLater(this, () -> {
-            // Load hooks with a delay, because plugins sometimes load before us even if
-            // they are in the softdepend list, don't know why. This way we're 100% sure.
-
-            // PlaceholderAPI hook - adds placeholders
-            if (checkHook("PlaceholderAPI")) {
-                new PlaceholderAPIHook(this).register();
-            }
-
-            // Economy Hook (Vault), try to hook even if the Econ is disabled in config
-            // so that if the user enables it after the plugin is loaded, it will work
-            // without restarting the server.
-            if (checkHook("Vault")) {
-                if (!Econ.setup(this)) {
-                    enabledHooks.remove("Vault");
-                    if (Config.USE_ECONOMY.getBoolean()) {
-                        ChatUtil.error(Message.ERROR_ECON_INVALID.getMessage());
-                    } else {
-                        ChatUtil.debug(Message.ERROR_ECON_INVALID.getMessage());
-                    }
-                }
-            }
-
-            if (!enabledHooks.isEmpty())
-                ChatUtil.sendConsole(Message.PREFIX.getMessage() + "&e" + getName() + " Hooked to: &f" + enabledHooks.toString().replaceAll("\\[\\]", ""));
-
-        }, 2);
-    }
-
-    private boolean checkHook(String pluginName) {
-        if (Bukkit.getPluginManager().isPluginEnabled(pluginName)) {
-            enabledHooks.add(pluginName);
-            return true;
-        } else {
-            ChatUtil.debug(Message.ERROR_HOOK_FAILED.getMessage().replace("{plugin}", pluginName));
-        }
-        return false;
-    }
-
-    public Set<String> getEnabledHooks() {
-        return enabledHooks;
     }
 
     @Override
