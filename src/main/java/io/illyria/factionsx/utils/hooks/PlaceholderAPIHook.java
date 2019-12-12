@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     private FactionsBootstrap plugin;
-    public static PlaceholderAPIHook papiExt;
+    private static PlaceholderAPIHook papiExt;
 
     public PlaceholderAPIHook(FactionsBootstrap plugin) {
         this.plugin = plugin;
