@@ -3,15 +3,17 @@ package io.illyria.factionsx.utils.hooks;
 
 import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.config.Message;
+import io.illyria.factionsx.internal.FactionsBootstrap;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class PlaceholderAPIHook extends PlaceholderExpansion {
 
-    private BukkitFactionsBootstrap plugin;
+    private FactionsBootstrap plugin;
 
-    public PlaceholderAPIHook(BukkitFactionsBootstrap plugin) {
+    public PlaceholderAPIHook(FactionsBootstrap plugin) {
         this.plugin = plugin;
     }
 
@@ -22,12 +24,12 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     @Override
     public String getAuthor() {
-        return plugin.getDescription().getAuthors().toString();
+        return ((JavaPlugin) plugin).getDescription().getAuthors().toString();
     }
 
     @Override
     public String getVersion() {
-        return plugin.getDescription().getVersion();
+        return ((JavaPlugin) plugin).getDescription().getVersion();
     }
 
     @Override

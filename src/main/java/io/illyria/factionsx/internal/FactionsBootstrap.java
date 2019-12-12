@@ -1,5 +1,7 @@
 package io.illyria.factionsx.internal;
 
+import java.io.File;
+
 public interface FactionsBootstrap {
 
     String getVersion();
@@ -8,6 +10,6 @@ public interface FactionsBootstrap {
 
     void unload();
 
-    String getConfigFolderPath();
+    File getBootstrapDataFolder();
 
 }

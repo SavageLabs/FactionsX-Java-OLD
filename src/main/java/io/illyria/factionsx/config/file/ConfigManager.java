@@ -3,16 +3,17 @@ package io.illyria.factionsx.config.file;
 import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.config.file.types.ConfigFile;
 import io.illyria.factionsx.config.file.types.MessageFile;
+import io.illyria.factionsx.internal.FactionsBootstrap;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ConfigManager {
 
-    private BukkitFactionsBootstrap plugin;
+    private FactionsBootstrap plugin;
     private static Map<String, CustomFile> fileMap = new HashMap<>();
 
-    public ConfigManager(BukkitFactionsBootstrap plugin) {
+    public ConfigManager(FactionsBootstrap plugin) {
         this.plugin = plugin;
         addFile(new MessageFile(plugin));
         addFile(new ConfigFile(plugin));

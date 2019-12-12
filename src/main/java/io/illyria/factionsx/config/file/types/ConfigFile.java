@@ -3,12 +3,13 @@ package io.illyria.factionsx.config.file.types;
 import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.file.CustomFile;
+import io.illyria.factionsx.internal.FactionsBootstrap;
 
 public class ConfigFile extends CustomFile {
 
-    private BukkitFactionsBootstrap instance;
+    private FactionsBootstrap instance;
 
-    public ConfigFile(BukkitFactionsBootstrap instance) {
+    public ConfigFile(FactionsBootstrap instance) {
         super(instance, "");
         this.instance = instance;
         for (Config message : Config.values()) {

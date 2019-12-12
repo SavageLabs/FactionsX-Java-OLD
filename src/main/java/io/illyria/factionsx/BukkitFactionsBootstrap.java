@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,32 +22,17 @@ import java.util.Set;
 public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBootstrap {
 
     private static BukkitFactionsBootstrap bukkitFactionsBootstrap;
-
-    public static BukkitFactionsBootstrap getInstance() {
-        return bukkitFactionsBootstrap;
-    }
-
     private FactionsX factionsX = new FactionsX(this);
 
-    public static PlaceholderAPIHook papiExt;
+    private static PlaceholderAPIHook papiExt;
+    private Set<String> enabledHooks = new HashSet<>();
 
     @Override
     public void onEnable() {
         bukkitFactionsBootstrap = this;
         initConfig();
         loadConfig();
-        Bukkit.getScheduler().runTaskLater(this, () -> {
-            // Load hooks with a delay, because plugins sometimes load before us even if
-            // they are in the softdepend list, don't know why. This way we're 100% sure.
-
-            // PlaceholderAPI hook - adds placeholders
-            if (checkHook("PlaceholderAPI")) {
-                papiExt = new PlaceholderAPIHook(this);
-                // actually register the placeholders
-                papiExt.register();
-            }
-
-        }, 2);
+        loadHooks();
         factionsX.enable();
     }
 
@@ -76,7 +62,6 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
 
     }
 
-    private Set<String> enabledHooks = new HashSet<>();
 
     public Set<String> getEnabledHooks() {
         return enabledHooks;
@@ -97,6 +82,21 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
         configManager.getFileMap().get("messages").init();
     }
 
+    public void loadHooks() {
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            // Load hooks with a delay, because plugins sometimes load before us even if
+            // they are in the softdepend list, don't know why. This way we're 100% sure.
+
+            // PlaceholderAPI hook - adds placeholders
+            if (checkHook("PlaceholderAPI")) {
+                papiExt = new PlaceholderAPIHook(this);
+                // actually register the placeholders
+                papiExt.register();
+            }
+
+        }, 2);
+    }
+
     private void registerListeners(Listener... listeners) {
         for (Listener listener : listeners) {
             getServer().getPluginManager().registerEvents(listener, bukkitFactionsBootstrap);
@@ -114,12 +114,19 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
     }
 
     @Override
-    public String getConfigFolderPath() {
-        return getConfig().getCurrentPath();
+    public File getBootstrapDataFolder() {
+        return this.getDataFolder();
     }
-
     public FactionsX getFactionsX() {
         return factionsX;
+    }
+
+    public static BukkitFactionsBootstrap getInstance() {
+        return bukkitFactionsBootstrap;
+    }
+
+    public PlaceholderAPIHook getPapiExt() {
+        return papiExt;
     }
 
 }

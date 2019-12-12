@@ -1,6 +1,7 @@
 package io.illyria.factionsx.config.file;
 
 import io.illyria.factionsx.BukkitFactionsBootstrap;
+import io.illyria.factionsx.internal.FactionsBootstrap;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -12,12 +13,12 @@ public abstract class CustomFile implements ICustomFile {
     private File file;
     private File configFile;
 
-    public CustomFile(BukkitFactionsBootstrap instance, String parent) {
-        if (!instance.getDataFolder().exists()) {
-            instance.getDataFolder().mkdir();
+    public CustomFile(FactionsBootstrap instance, String parent) {
+        if (!instance.getBootstrapDataFolder().exists()) {
+            instance.getBootstrapDataFolder().mkdir();
         }
         if (parent != null) {
-            file = new File(instance.getDataFolder(), File.separator + parent);
+            file = new File(instance.getBootstrapDataFolder(), File.separator + parent);
             if (!file.exists()) {
                 file.mkdir();
             }

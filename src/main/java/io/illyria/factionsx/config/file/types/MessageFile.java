@@ -3,14 +3,15 @@ package io.illyria.factionsx.config.file.types;
 import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.config.file.CustomFile;
+import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
 import org.bukkit.ChatColor;
 
 public class MessageFile extends CustomFile {
 
-    private BukkitFactionsBootstrap instance;
+    private FactionsBootstrap instance;
 
-    public MessageFile(BukkitFactionsBootstrap instance) {
+    public MessageFile(FactionsBootstrap instance) {
         super(instance, "");
         this.instance = instance;
         for (Message message : Message.values()) {
