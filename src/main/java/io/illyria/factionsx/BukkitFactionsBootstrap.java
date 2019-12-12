@@ -108,7 +108,7 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
             enabledHooks.add(pluginName);
             return true;
         } else if (Config.DEBUG.getBoolean()) {
-            ChatUtil.sendConsole(Message.ERROR_HOOK_FAILED.getMessage().replace("%plugin%", pluginName));
+            ChatUtil.sendConsole(Message.ERROR_HOOK_FAILED.getMessage().replace("{plugin}", pluginName));
         }
         return false;
     }

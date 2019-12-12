@@ -9,11 +9,11 @@ public enum Message {
     PREFIX("Command.prefix", "&4&lFactionsX &f➤ "),
 
     GENERAL_NOPERMISSION("General.no-permission", "&7[&4✕&7] &cYou don't have permissions!"),
-    GENERAL_NOPERMISSION_SPECIFIC("General.no-permission-specific", "&7[&4✕&7] &cYou must have the permission &e%perm%&c in order to do this!"),
+    GENERAL_NOPERMISSION_SPECIFIC("General.no-permission-specific", "&7[&4✕&7] &cYou must have the permission &e{perm}&c in order to do this!"),
 
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig Reloaded!"),
 
-    ERROR_HOOK_FAILED("Message.failed-to-hook", "&7[&4✕&7] &cCould not hook to %plugin%. %plugin% support is disabled"),
+    ERROR_HOOK_FAILED("Message.failed-to-hook", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),
 
     PAPI_ERROR("Placeholder.error","&c&oerror"),
 
