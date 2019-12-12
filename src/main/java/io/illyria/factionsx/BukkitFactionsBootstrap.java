@@ -24,7 +24,6 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
     private static BukkitFactionsBootstrap bukkitFactionsBootstrap;
     private FactionsX factionsX = new FactionsX(this);
 
-    private static PlaceholderAPIHook papiExt;
     private Set<String> enabledHooks = new HashSet<>();
 
     @Override
@@ -41,9 +40,8 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
         // Cancel running Tasks, so that it should be PlugMan-safe
         Bukkit.getServer().getScheduler().cancelTasks(this);
         // Unregister PAPI, so that it should be PlugMan-safe
-        if (enabledHooks.contains("PlaceholderAPI") && papiExt != null) {
-            PlaceholderAPIHook.unreg(papiExt);
-            papiExt = null;
+        if (enabledHooks.contains("PlaceholderAPI")) {
+            PlaceholderAPIHook.unreg();
         }
         // Set the saved instance to null, saving memory
         bukkitFactionsBootstrap = null;
@@ -89,9 +87,7 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
 
             // PlaceholderAPI hook - adds placeholders
             if (checkHook("PlaceholderAPI")) {
-                papiExt = new PlaceholderAPIHook(this);
-                // actually register the placeholders
-                papiExt.register();
+                new PlaceholderAPIHook(this).register();
             }
 
         }, 2);
@@ -117,16 +113,13 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
     public File getBootstrapDataFolder() {
         return this.getDataFolder();
     }
+
     public FactionsX getFactionsX() {
         return factionsX;
     }
 
     public static BukkitFactionsBootstrap getInstance() {
         return bukkitFactionsBootstrap;
-    }
-
-    public PlaceholderAPIHook getPapiExt() {
-        return papiExt;
     }
 
 }

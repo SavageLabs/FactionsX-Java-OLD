@@ -1,7 +1,5 @@
 package io.illyria.factionsx.utils.hooks;
 
-
-import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -12,9 +10,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     private FactionsBootstrap plugin;
+    public static PlaceholderAPIHook papiExt;
 
     public PlaceholderAPIHook(FactionsBootstrap plugin) {
         this.plugin = plugin;
+        papiExt = this;
     }
 
     @Override
@@ -37,8 +37,9 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
         return true;
     }
 
-    public static void unreg(PlaceholderExpansion exp) {
-        PlaceholderAPI.unregisterExpansion(exp);
+    public static void unreg() {
+        if (papiExt != null)
+            PlaceholderAPI.unregisterExpansion(papiExt);
     }
 
     @Override
