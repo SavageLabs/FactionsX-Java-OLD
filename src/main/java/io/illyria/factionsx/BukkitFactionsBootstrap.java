@@ -97,10 +97,16 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
             if (checkHook("Vault")) {
                 if (!Econ.setup(this)) {
                     enabledHooks.remove("Vault");
-                    if (Config.USE_ECONOMY.getBoolean() || Config.DEBUG.getBoolean())
+                    if (Config.USE_ECONOMY.getBoolean()) {
                         ChatUtil.error(Message.ERROR_ECON_INVALID.getMessage());
+                    } else {
+                        ChatUtil.debug(Message.ERROR_ECON_INVALID.getMessage());
+                    }
                 }
             }
+
+            if (!enabledHooks.isEmpty())
+                ChatUtil.sendConsole(Message.PREFIX.getMessage() + "&e" + getName() + " Hooked to: &f" + enabledHooks.toString().replaceAll("\\[\\]", ""));
 
         }, 2);
     }
@@ -115,8 +121,8 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
         if (Bukkit.getPluginManager().isPluginEnabled(pluginName)) {
             enabledHooks.add(pluginName);
             return true;
-        } else if (Config.DEBUG.getBoolean()) {
-            ChatUtil.sendConsole(Message.ERROR_HOOK_FAILED.getMessage().replace("{plugin}", pluginName));
+        } else {
+            ChatUtil.debug(Message.ERROR_HOOK_FAILED.getMessage().replace("{plugin}", pluginName));
         }
         return false;
     }
