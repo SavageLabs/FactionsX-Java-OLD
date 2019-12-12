@@ -1,19 +1,14 @@
 package io.illyria.factionsx;
 
-import io.illyria.factionsx.config.Config;
-import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.internal.FactionsBootstrap;
-import io.illyria.factionsx.utils.ChatUtil;
-import io.illyria.factionsx.utils.hooks.Econ;
 import io.illyria.factionsx.utils.hooks.HookManager;
 import io.illyria.factionsx.utils.hooks.PlaceholderAPIHook;
+import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Here is the bukkit implementation of Factions plugin.
@@ -30,6 +25,8 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
     @Override
     public void onEnable() {
         bukkitFactionsBootstrap = this;
+        // Suggest using Paper for better performance
+        PaperLib.suggestPaper(this);
         hookManager = HookManager.getInstance();
         hookManager.loadHooks();
         loadConfig();

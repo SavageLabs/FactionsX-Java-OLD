@@ -4,7 +4,7 @@ authors: [ProSavage, Keeeeezay, Valentina_pro]
 version: ${project.version}
 description: The Ultimate Factions Solution
 api-version: '1.13'
-softdepend: [Vault, PlaceholderAPI, Essentials]
+softdepend: [Vault, PlaceholderAPI, Essentials, SuperVanish, PremiumVanish]
 commands:
   factionsx:
     description: Main Command

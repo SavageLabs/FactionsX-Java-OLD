@@ -54,9 +54,7 @@ public class HookManager {
                 }
             }
 
-            // Essentials Hook, try to hook even if the Econ is disabled in config
-            // so that if the user enables it after the plugin is loaded, it will work
-            // without restarting the server.
+            // Essentials Hook - vanish and teleport handling support
             if (checkHook("Essentials")) {
                 if (!EssentialsHook.setup(plugin)) {
                     enabledHooks.remove("Essentials");
@@ -66,6 +64,11 @@ public class HookManager {
                         ChatUtil.debug(Message.ERROR_ESSENTIALS_INVALID.getMessage());
                     }
                 }
+            }
+
+            // SuperVanish/PremiumVanish hook - vanish support
+            if (checkHook("SuperVanish") || checkHook("PremiumVanish")) {
+                new PlaceholderAPIHook(plugin).register();
             }
 
             if (!enabledHooks.isEmpty())
