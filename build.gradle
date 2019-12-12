@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.1.0'
 }
 
 group 'io.illyria'
@@ -19,14 +20,38 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    implementation("com.google.guava:guava:28.1-jre")
-    compile 'me.clip:placeholderapi:2.10.4'
-    compile 'me.rayzr522:jsonmessage:1.2.0'
+    compileOnly 'me.clip:placeholderapi:2.10.4'
     compileOnly('org.spigotmc:spigot-api:1.15-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5', module: 'bungeecord-chat'
         exclude group: 'javax.persistence', module: 'persistence-api'
         exclude group: 'junit', module: 'junit'
         exclude group: 'com.google.guava', module: 'guava'
     }
+    implementation 'com.google.guava:guava:28.1-jre'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    compile 'me.rayzr522:jsonmessage:1.2.0'
+}
 
+processResources {
+    eachFile { details ->
+        if (details.name.endsWith('.yml')) { // or whatever pattern/criteria is appropriate
+            filter {
+                String line -> line.replaceAll('\\$\\{project.version}', version.toString())
+            }
+        }
+    }
+}
+
+shadowJar {
+    mergeServiceFiles()
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+    relocate 'com.google', 'io.illyria.shade.google'
+    relocate 'me.rayzr522.jsonmessage', 'io.illyria.shade.jsonmessage'
+    archiveName 'FactionsX.jar'
+}
+
+task ci {
+    dependsOn clean
+    dependsOn shadowJar
 }

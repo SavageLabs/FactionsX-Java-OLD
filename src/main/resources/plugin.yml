@@ -1,0 +1,11 @@
+main: io.illyria.factionsx.BukkitFactionsBootstrap
+name: FactionsX
+authors: [ProSavage, Keeeeezay, Valentina_pro]
+version: ${project.version}
+description: The Ultimate Factions Solution
+api-version: '1.13'
+softdepend: [Vault, PlaceholderAPI]
+commands:
+  factionsx:
+    description: Main Command
+    aliases: [factions,f]

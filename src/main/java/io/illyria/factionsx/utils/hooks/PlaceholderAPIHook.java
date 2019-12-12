@@ -41,6 +41,7 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     @Override
     public String onRequest(OfflinePlayer p, String s) {
+        // %factionsx_version% - Displays FactionsX version
         if (s.equalsIgnoreCase("version")) {
             return getVersion();
         }
