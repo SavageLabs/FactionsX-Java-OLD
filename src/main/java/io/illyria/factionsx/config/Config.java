@@ -14,10 +14,16 @@ public enum Config {
             "world2"
     }),
 
-    USE_ECONOMY("GeneralSettings.use-economy", true),
+    USE_ECONOMY("Economy.enabled", true),
+    PRICE_HOME_CREATE("Economy.price-home-creation", 0.0),
+    PRICE_HOME_TELEPORT("Economy.price-home-teleport", 0.0),
+
+
     USE_PARTICLES("GeneralSettings.use-particles", true),
     USE_HOLOGRAMS("GeneralSettings.use-holograms", true),
     USE_ANIMATIONS("GeneralSettings.use-animations", true),
+    HOOK_ESSENTIALS("Hooks.essentials-compatibility.enabled", true),
+    HOOK_ESSENTIALS_PASSTELEPORT("Hooks.essentials-compatibility.pass-home-teleport-handling", true),
     IGNORE_VANISHED("GeneralSettings.ignore-vanished", true);
 
 

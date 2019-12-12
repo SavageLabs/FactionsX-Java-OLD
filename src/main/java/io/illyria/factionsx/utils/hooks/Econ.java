@@ -13,7 +13,7 @@ public class Econ {
     public static boolean setup(FactionsBootstrap plugin) {
         // Just to be safe, return true if it's already setup.
         if (econ != null) return true;
-        // Just to be safe, return false if Vault is not enabled.
+        // Just to be safe, return false if the plugin is not enabled.
         if (((JavaPlugin) plugin).getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
         }
@@ -33,5 +33,9 @@ public class Econ {
 
     public static boolean isSetup() {
         return econ != null;
+    }
+
+    public static Economy getEconomy() {
+        return econ;
     }
 }

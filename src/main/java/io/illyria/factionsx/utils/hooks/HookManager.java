@@ -54,6 +54,20 @@ public class HookManager {
                 }
             }
 
+            // Essentials Hook, try to hook even if the Econ is disabled in config
+            // so that if the user enables it after the plugin is loaded, it will work
+            // without restarting the server.
+            if (checkHook("Essentials")) {
+                if (!EssentialsHook.setup(plugin)) {
+                    enabledHooks.remove("Essentials");
+                    if (Config.HOOK_ESSENTIALS.getBoolean()) {
+                        ChatUtil.error(Message.ERROR_ESSENTIALS_INVALID.getMessage());
+                    } else {
+                        ChatUtil.debug(Message.ERROR_ESSENTIALS_INVALID.getMessage());
+                    }
+                }
+            }
+
             if (!enabledHooks.isEmpty())
                 ChatUtil.sendConsole(Message.PREFIX.getMessage() + "&e" + Bukkit.getName() + " Hooked to: &f" + enabledHooks.toString().replaceAll("\\[\\]", ""));
 

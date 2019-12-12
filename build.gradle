@@ -15,15 +15,23 @@ repositories {
     // PlaceholderAPI
     maven { url 'http://repo.extendedclip.com/content/repositories/placeholderapi/' }
     // JSON Message
-    maven { url 'https://rayzr.dev/repo/'}
+    maven { url 'https://rayzr.dev/repo/' }
     // Vault
     maven { url 'https://jitpack.io' }
+    // Essentials
+    maven { url 'https://ci.ender.zone/plugin/repository/everything/' }
+    // PaperLib
+    maven {
+        name 'papermc'
+        url 'https://papermc.io/repo/repository/maven-public/'
+    }
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compileOnly 'me.clip:placeholderapi:2.10.4'
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
+    compileOnly 'net.ess3:EssentialsX:2.17.1'
     compileOnly('org.spigotmc:spigot-api:1.15-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5', module: 'bungeecord-chat'
         exclude group: 'javax.persistence', module: 'persistence-api'
@@ -33,6 +41,7 @@ dependencies {
     implementation 'com.google.guava:guava:28.1-jre'
     implementation 'com.google.code.gson:gson:2.8.5'
     compile 'me.rayzr522:jsonmessage:1.2.0'
+    compile "io.papermc:paperlib:1.0.2"
 }
 
 processResources {
@@ -51,6 +60,7 @@ shadowJar {
     exclude 'META-INF/*.RSA'
     relocate 'com.google', 'io.illyria.shade.google'
     relocate 'me.rayzr522.jsonmessage', 'io.illyria.shade.jsonmessage'
+    relocate 'io.papermc.lib', 'io.illyria.shade.paperlib'
     archiveName 'FactionsX.jar'
 }
 
