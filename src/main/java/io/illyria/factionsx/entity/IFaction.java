@@ -1,7 +1,7 @@
 package io.illyria.factionsx.entity;
 
-import io.illyria.factionsx.core.relation.RelationParticipator;
 import io.illyria.factionsx.core.Role;
+import io.illyria.factionsx.core.relation.RelationParticipator;
 
 import java.util.Set;
 

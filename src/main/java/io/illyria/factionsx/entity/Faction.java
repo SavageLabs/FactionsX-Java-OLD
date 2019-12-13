@@ -3,6 +3,7 @@ package io.illyria.factionsx.entity;
 import io.illyria.factionsx.core.Role;
 import io.illyria.factionsx.core.relation.Relation;
 import io.illyria.factionsx.core.relation.RelationParticipator;
+
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;

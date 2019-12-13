@@ -6,6 +6,7 @@ import io.illyria.factionsx.config.Message;
 import me.rayzr522.jsonmessage.JSONMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import javax.annotation.Nullable;
@@ -16,6 +17,29 @@ import javax.annotation.Nullable;
  */
 
 public class ChatUtil {
+
+    // - Player messaging single lined and multi lined messages.
+
+    /**
+     * Description: Sends the player a multi line message.
+     *
+     * @param toPlayer The player we want to send the message to.
+     * @param messages Creates an list and then loops over the list then sends it to the player
+     */
+    public static void message(CommandSender toPlayer, String... messages){
+        for (String message : messages)
+            message(toPlayer, message);
+    }
+
+    /**
+     * Description: Send the player a single lined coloured message.
+     *
+     * @param toPlayer The player that is set to receive a message.
+     * @param message Single lined message that converts all colour codes and then send it to the player the question.
+     */
+    public static void message(CommandSender toPlayer, String message){
+        toPlayer.sendMessage(color(message));
+    }
 
     // Color messages
 

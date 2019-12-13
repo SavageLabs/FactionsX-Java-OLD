@@ -1,6 +1,5 @@
 package io.illyria.factionsx;
 
-import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.file.ConfigManager;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.manager.FactionManager;

@@ -42,6 +42,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     compile 'me.rayzr522:jsonmessage:1.2.0'
     compile "io.papermc:paperlib:1.0.2"
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
 }
 
 processResources {

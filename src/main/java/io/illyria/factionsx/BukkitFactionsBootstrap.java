@@ -1,19 +1,15 @@
 package io.illyria.factionsx;
 
-import io.illyria.factionsx.config.Config;
-import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.internal.FactionsBootstrap;
-import io.illyria.factionsx.utils.ChatUtil;
-import io.illyria.factionsx.utils.hooks.Econ;
+import io.illyria.factionsx.utils.RegisterUtil;
 import io.illyria.factionsx.utils.hooks.HookManager;
 import io.illyria.factionsx.utils.hooks.PlaceholderAPIHook;
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Here is the bukkit implementation of Factions plugin.
@@ -29,6 +25,9 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
 
     @Override
     public void onEnable() {
+        // Register command directly into the command map avoiding the "plugin.yml"
+        //registerCommands(new CommandTest());
+
         bukkitFactionsBootstrap = this;
         hookManager = HookManager.getInstance();
         hookManager.loadHooks();
@@ -70,6 +69,12 @@ public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBoots
         for (Listener listener : listeners) {
             getServer().getPluginManager().registerEvents(listener, bukkitFactionsBootstrap);
         }
+    }
+
+
+    private void registerCommands(Command... commands){
+        for(Command command : commands)
+            RegisterUtil.registerCommand(command);
     }
 
     @Override
