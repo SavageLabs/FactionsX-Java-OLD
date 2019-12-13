@@ -49,4 +49,9 @@ public interface IFPlayer {
 
     double getMaxPower();
 
+    //----------------------------------//
+    //   ADMIN RELATED METHODS          //
+    //----------------------------------//
+
+    boolean isBypassing();
 }

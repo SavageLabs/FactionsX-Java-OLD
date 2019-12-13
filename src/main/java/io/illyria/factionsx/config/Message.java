@@ -13,6 +13,10 @@ public enum Message {
     GENERAL_NOPERMISSION("General.no-permission", "&7[&4✕&7] &cYou don't have permissions!"),
     GENERAL_NOPERMISSION_SPECIFIC("General.no-permission-specific", "&7[&4✕&7] &cYou must have the permission &e{perm}&c in order to do this!"),
 
+    COMMAND_PARSING_PLAYERNOTFOUND("command-parsing.player-not-found", "&7[&4✕&7] &cPlayer was not found."),
+    COMMAND_PARSING_CANNOTREFERENCEYOURSELF("command-parsing.cannot-reference-your-self","&7[&4✕&7] &cYou cannot reference yourself."),
+    COMMAND_PARSING_ARGISNOTINT("command-parsing.arg-is-not-int", "&7[&4✕&7] &cThe specified argument is not an integer."),
+
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
     ERROR_HOOK_FAILED("Message.failed-to-hook", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),

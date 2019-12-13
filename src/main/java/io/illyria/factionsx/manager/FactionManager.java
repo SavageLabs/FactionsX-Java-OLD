@@ -6,6 +6,7 @@ import io.illyria.factionsx.persistence.Persistence;
 import io.illyria.factionsx.persistence.PersistenceEngine;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class FactionManager {
@@ -29,6 +30,11 @@ public class FactionManager {
     public Set<IFaction> getFactions() {
         return factions;
     }
+
+    public IFaction getFactionByName(String name) {
+        return this.getFactions().stream().parallel().filter(faction -> faction.getName().equals(name)).findFirst().orElse(null);
+    }
+
 
     public void loadFactions() {
        factions = factionPersistence.getAll();

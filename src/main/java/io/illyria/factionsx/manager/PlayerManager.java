@@ -3,6 +3,7 @@ package io.illyria.factionsx.manager;
 import io.illyria.factionsx.entity.IFPlayer;
 import io.illyria.factionsx.persistence.Persistence;
 import io.illyria.factionsx.persistence.PersistenceEngine;
+import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -50,6 +51,12 @@ public class PlayerManager {
         }
         return null;
     }
+
+    public IFPlayer getFPlayer(Player player) {
+        if (player == null) return null;
+        return getFPlayerByName(player.getName());
+    }
+
 
     public void loadPlayers() {
         fPlayers = playerPersistence.getAll();

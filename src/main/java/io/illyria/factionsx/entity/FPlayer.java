@@ -93,4 +93,9 @@ public class FPlayer implements IFPlayer {
     public double getMaxPower() {
         return 0;
     }
+
+    @Override
+    public boolean isBypassing() {
+        return false;
+    }
 }
