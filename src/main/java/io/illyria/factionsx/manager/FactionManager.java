@@ -35,7 +35,6 @@ public class FactionManager {
         return this.getFactions().stream().parallel().filter(faction -> faction.getName().equals(name)).findFirst().orElse(null);
     }
 
-
     public void loadFactions() {
        factions = factionPersistence.getAll();
     }

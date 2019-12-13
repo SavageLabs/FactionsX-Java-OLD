@@ -14,7 +14,6 @@ import java.util.List;
 
 public class CommandContext {
 
-
     private CommandSender commandSender;
     private List<String> args;
     private String aliasused;
@@ -22,14 +21,13 @@ public class CommandContext {
     private IFPlayer fPlayer;
     private IFaction faction;
 
-
     public CommandContext(CommandSender commandSender, List<String> args, String aliasUsed) {
         this.commandSender = commandSender;
         this.args = args;
         this.aliasused = aliasUsed;
-        if (commandSender instanceof Player) this.player = (Player) commandSender;
-        if (commandSender instanceof FPlayer && this.player != null) this.fPlayer = FactionsX.getFactionsX().getPlayerManager().getFPlayer(player);
-        if (commandSender instanceof FPlayer && this.player != null) this.faction = this.fPlayer.getFaction();
+        if (commandSender instanceof Player) { this.player = (Player) commandSender; }
+        if (commandSender instanceof FPlayer && this.player != null) { this.fPlayer = FactionsX.getFactionsX().getPlayerManager().getFPlayer(player); }
+        if (commandSender instanceof FPlayer && this.player != null) { this.faction = this.fPlayer.getFaction(); }
     }
 
     public boolean isBypassing() {
@@ -67,8 +65,8 @@ public class CommandContext {
     // We also need to know if it was parsed correctly or not, so we used a boxed value.
     public Boolean getArgAsBoolean(int index, boolean informIfNot) {
         String rawBoolean = args.get(index).toLowerCase();
-        if (rawBoolean.equals("true") || rawBoolean.equals("1")) return true;
-        if (rawBoolean.equals("false") || rawBoolean.equals("0")) return false;
+        if (rawBoolean.equals("true") || rawBoolean.equals("1")) { return true; }
+        if (rawBoolean.equals("false") || rawBoolean.equals("0")) { return false; }
         return null;
     }
 
@@ -79,6 +77,5 @@ public class CommandContext {
     public void message(String message) {
         commandSender.sendMessage(ChatUtil.color(message));
     }
-
 
 }

@@ -57,7 +57,6 @@ public class PlayerManager {
         return getFPlayerByName(player.getName());
     }
 
-
     public void loadPlayers() {
         fPlayers = playerPersistence.getAll();
     }
