@@ -27,3 +27,4 @@ hs_err_pid*
 # Include lib dir
 !/libs
 !CMIAPI7.6.2.0.jar
+!SuperVanish.jar
