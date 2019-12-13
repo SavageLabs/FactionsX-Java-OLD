@@ -1,6 +1,7 @@
 package io.illyria.factionsx.utils;
 
 import io.illyria.factionsx.config.Config;
+import io.illyria.factionsx.utils.hooks.CMIHook;
 import io.illyria.factionsx.utils.hooks.EssentialsHook;
 import io.illyria.factionsx.utils.hooks.SuperVanishHook;
 import org.bukkit.entity.Player;
@@ -11,6 +12,7 @@ public class VanishUtil {
     public static boolean isVanished(Player player) {
         if (EssentialsHook.isSetup() && EssentialsHook.isVanished(player)) return true;
         if (SuperVanishHook.isSetup() && SuperVanishHook.isVanished(player)) return true;
+        if (CMIHook.isSetup() && CMIHook.isVanished(player)) return true;
         return hasVanishedMetadata(player);
     }
 
