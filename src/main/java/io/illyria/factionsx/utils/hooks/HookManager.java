@@ -71,6 +71,18 @@ public class HookManager {
                 new PlaceholderAPIHook(plugin).register();
             }
 
+            // dynmap
+            if (checkHook("dynmap")) {
+                if (!DynmapHook.setup(plugin)) {
+                    enabledHooks.remove("dynmap");
+                    if (Config.HOOK_DYNMAP.getBoolean()) {
+                        ChatUtil.error(Message.ERROR_DYNMAP_INVALID.getMessage());
+                    } else {
+                        ChatUtil.debug(Message.ERROR_DYNMAP_INVALID.getMessage());
+                    }
+                }
+            }
+
             if (!enabledHooks.isEmpty())
                 ChatUtil.sendConsole(Message.PREFIX.getMessage() + "&e" + Bukkit.getName() + " Hooked to: &f" + enabledHooks.toString().replaceAll("\\[\\]", ""));
 

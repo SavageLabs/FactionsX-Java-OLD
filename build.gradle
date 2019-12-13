@@ -38,7 +38,7 @@ dependencies {
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
     compileOnly 'net.ess3:EssentialsX:2.17.1'
     compileOnly 'de.myzelyam:SuperVanish:6.1.3'
-    compileOnly 'com.github.webbukkit.dynmap:v3.0-beta-4'
+    compileOnly 'com.github.webbukkit.dynmap:dynmap-api:v3.0-beta-4'
     compileOnly name: 'CMIAPI7.6.2.0'
     compileOnly('org.spigotmc:spigot-api:1.15-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5', module: 'bungeecord-chat'

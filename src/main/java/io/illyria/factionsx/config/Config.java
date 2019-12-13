@@ -21,8 +21,11 @@ public enum Config {
     USE_PARTICLES("GeneralSettings.use-particles", true),
     USE_HOLOGRAMS("GeneralSettings.use-holograms", true),
     USE_ANIMATIONS("GeneralSettings.use-animations", true),
+
     HOOK_ESSENTIALS("Hooks.essentials-compatibility.enabled", true),
     HOOK_ESSENTIALS_PASSTELEPORT("Hooks.essentials-compatibility.pass-home-teleport-handling", true),
+    HOOK_DYNMAP("Hooks.dynmap-compatibility.enabled", true),
+
 
     VANISH_IGNORE("Vanish.ignore-vanished-players", true),
     VANISH_CHECK_CANSEE("Vanish.use-cansee-check", false);

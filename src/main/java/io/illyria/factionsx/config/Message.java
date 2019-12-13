@@ -18,9 +18,9 @@ public enum Message {
     ERROR_HOOK_FAILED("Message.failed-to-hook", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),
     ERROR_ECON_INVALID("Message.economy-hook-failed", "&7[&4✕&7] &cEconomy support has been disabled! Error while hooking to Vault, or no Economy Service was found!"),
     ERROR_ESSENTIALS_INVALID("Message.essentials-hook-failed", "&7[&4✕&7] &cEssentials support has been disabled! Error while hooking to Essentials, or you may have an outdated version! &eOnly EssentialsX is supported, you can download it from here -> https://www.spigotmc.org/resources/essentialsx.9089/"),
+    ERROR_DYNMAP_INVALID("Message.dynmap-hook-failed", "&7[&4✕&7] &cDynmap support has been disabled! Error while trying to get DynmapAPI"),
 
-    PAPI_ERROR("Placeholder.error","&c&oerror"),
-
+    PAPI_ERROR("Placeholder.error", "&c&oerror"),
 
     TIME_DAYS("Time.days", "days"),
     TIME_DAY("Time.day", "day"),
