@@ -17,7 +17,7 @@ public enum Message {
     COMMAND_PARSING_CANNOTREFERENCEYOURSELF("command-parsing.cannot-reference-your-self","&7[&4✕&7] &cYou cannot reference yourself."),
     COMMAND_PARSING_ARGISNOTINT("command-parsing.arg-is-not-int", "&7[&4✕&7] &cThe specified argument is not an integer."),
 
-    CMD_RELOAD_SUCCESS("gommand.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
+    CMD_RELOAD_SUCCESS("command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
     ERROR_HOOK_FAILED("hooks.failed-to-hook", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),
     ERROR_ECON_INVALID("hooks.economy-hook-failed", "&7[&4✕&7] &cEconomy support has been disabled! Error while hooking to Vault, or no Economy Service was found!"),
