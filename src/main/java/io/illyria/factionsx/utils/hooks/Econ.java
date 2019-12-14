@@ -8,9 +8,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Econ {
 
+    private Econ() {
+        throw new AssertionError("Instantiating utility class.");
+    }
+
     private static Economy econ = null;
 
-    public static boolean setup(FactionsBootstrap plugin) {
+    static boolean setup(FactionsBootstrap plugin) {
         // Just to be safe, return true if it's already setup.
         if (econ != null) return true;
         // Just to be safe, return false if the plugin is not enabled.

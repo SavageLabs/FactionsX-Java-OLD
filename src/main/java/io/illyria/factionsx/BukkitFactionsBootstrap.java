@@ -38,8 +38,8 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
         // Cancel running Tasks, so that it should be PlugMan-safe
         Bukkit.getServer().getScheduler().cancelTasks(this);
         // Unregister PAPI, so that it should be PlugMan-safe
-        if (hookManager.getEnabledHooks().contains("PlaceholderAPI")) {
-            PlaceholderAPIHook.unreg();
+        if (PlaceholderAPIHook.isSetup()) {
+            PlaceholderAPIHook.getPapiExt().unreg();
         }
         // Set the saved instance to null, saving memory
         bukkitFactionsBootstrap = null;

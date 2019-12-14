@@ -2,17 +2,21 @@ package io.illyria.factionsx.utils.hooks;
 
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.internal.FactionsBootstrap;
+import io.illyria.factionsx.utils.ChatUtil;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     private FactionsBootstrap plugin;
     private static PlaceholderAPIHook papiExt;
 
-    public PlaceholderAPIHook(FactionsBootstrap plugin) {
+    PlaceholderAPIHook(FactionsBootstrap plugin) {
         this.plugin = plugin;
         papiExt = this;
     }
@@ -37,9 +41,23 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
         return true;
     }
 
-    public static void unreg() {
-        if (papiExt != null)
+    public void unreg() {
+        if (isSetup())
             PlaceholderAPI.unregisterExpansion(papiExt);
+    }
+
+    public String parse(String str, OfflinePlayer p) {
+        if (str.length() <= 0 || !str.contains("%") || !isSetup()) return str;
+        return PlaceholderAPI.setPlaceholders(p, str);
+    }
+
+    public List<String> parse(List<String> str, OfflinePlayer p) {
+        if (str.isEmpty() || !isSetup()) return str;
+        List<String> parsed = new ArrayList<>();
+        for (String string : str) {
+            parsed.add(ChatUtil.color(PlaceholderAPI.setPlaceholders(p, string)));
+        }
+        return parsed;
     }
 
     @Override
@@ -50,6 +68,8 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
         }
         return Message.PAPI_ERROR.getMessage();
     }
+
+    public static PlaceholderAPIHook getPapiExt() { return papiExt; }
 
     public static boolean isSetup() {
         return papiExt != null;

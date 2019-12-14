@@ -15,6 +15,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class EssentialsHook {
 
+    private EssentialsHook() {
+        throw new AssertionError("Instantiating utility class.");
+    }
+
     private static IEssentials essentials = null;
 
     public static boolean setup(FactionsBootstrap plugin) {

@@ -3,12 +3,15 @@ package io.illyria.factionsx.utils;
 import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.Message;
+import io.illyria.factionsx.utils.hooks.PlaceholderAPIHook;
 import me.rayzr522.jsonmessage.JSONMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 /**
  * Methods related to messages, actionbars, titles et similia.
@@ -17,10 +20,26 @@ import javax.annotation.Nullable;
 
 public class ChatUtil {
 
+    private ChatUtil() {
+        throw new AssertionError("Instantiating utility class.");
+    }
+
     // Color messages
 
     public static String color(String str) {
         return ChatColor.translateAlternateColorCodes('&', str);
+    }
+
+    // Parse PAPI placeholders
+
+    public static String parsePAPI(String toParse, OfflinePlayer player) {
+        if (!PlaceholderAPIHook.isSetup()) return toParse;
+        return PlaceholderAPIHook.getPapiExt().parse(toParse, player);
+    }
+
+    public static List<String> parsePAPI(List<String> toParse, OfflinePlayer player) {
+        if (!PlaceholderAPIHook.isSetup()) return toParse;
+        return PlaceholderAPIHook.getPapiExt().parse(toParse, player);
     }
 
     // Console Feedback messages
