@@ -1,6 +1,9 @@
 package io.illyria.factionsx.core;
 
 import io.illyria.factionsx.config.Config;
+import io.illyria.factionsx.config.Message;
+import io.illyria.factionsx.utils.ChatUtil;
+import org.bukkit.conversations.Conversable;
 import org.bukkit.permissions.Permissible;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.permissions.PermissionDefault;
@@ -37,11 +40,18 @@ public enum Permission {
     }
 
     public static boolean hasPermission(Permissible permissible, Permission permission) {
-        return permissible.hasPermission(permission.getFullPermissionNode());
+        return hasPermission(permissible, permission, false);
     }
 
-    public static boolean hasPermission(Permissible permissible, String permission) {
-        return permissible.hasPermission(permission);
+    public static boolean hasPermission(Permissible permissible, Permission permission, boolean silent) {
+        return hasPermission(permissible, permission.getFullPermissionNode(), silent);
+    }
+
+    public static boolean hasPermission(Permissible permissible, String permission, boolean silent) {
+        boolean hasPerm = permissible.hasPermission(permission);
+        if (!silent && !hasPerm && permissible instanceof Conversable)
+            ((Conversable) permissible).sendRawMessage(ChatUtil.color(String.format(Message.PERMISSIONS_NOPERMISSION.getMessage(), permission)));
+        return hasPerm;
     }
 
     public static int getMaxPermission(Permissible permissible, Permission permission) {

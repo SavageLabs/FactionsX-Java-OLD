@@ -1,5 +1,6 @@
 package io.illyria.factionsx;
 
+import io.illyria.factionsx.core.Permission;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.hooks.HookManager;
 import io.illyria.factionsx.utils.hooks.PlaceholderAPIHook;
@@ -31,6 +32,7 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
         hookManager.loadHooks();
         factionsX.enable();
         loadConfig();
+        Permission.registerAllPermissions(this.getServer().getPluginManager());
     }
 
     @Override
