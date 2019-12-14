@@ -5,7 +5,7 @@ import io.illyria.factionsx.persistence.json.Json;
 
 public final class PersistenceEngine {
     //GETTING FROM CONFIG
-    private static PersistenceEngine persistenceEngine = new PersistenceEngine(PersistenceType.JSON);
+    private static PersistenceEngine persistenceEngine;
     private Dispatcher dispatcher;
 
     private Persistence<IFPlayer> fPlayerPersistence;
@@ -18,6 +18,7 @@ public final class PersistenceEngine {
             case MYSQL:
             case MONGODB:
         }
+        setPersistences();
     }
 
     public static PersistenceEngine getInstance() {
@@ -27,12 +28,9 @@ public final class PersistenceEngine {
         return persistenceEngine;
     }
 
-    public void setFPlayerPersistence(Persistence<IFPlayer> fPlayerPersistence) {
-        this.fPlayerPersistence = this.fPlayerPersistence == null ? fPlayerPersistence : this.fPlayerPersistence;
-    }
-
-    public void setFactionPersistence(Persistence<IFaction> factionPersistence) {
-        this.factionPersistence = this.factionPersistence == null ? factionPersistence : this.factionPersistence;
+    public void setPersistences() {
+        this.fPlayerPersistence = this.fPlayerPersistence == null ? dispatcher.getfPlayerPersistece() : this.fPlayerPersistence;
+        this.factionPersistence = this.factionPersistence == null ? dispatcher.getFactionPersistence() : this.factionPersistence;
     }
 
     public Persistence<IFPlayer> getfPlayerPersistence() {

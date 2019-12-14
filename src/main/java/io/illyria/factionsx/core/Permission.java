@@ -50,7 +50,7 @@ public enum Permission {
     public static boolean hasPermission(Permissible permissible, String permission, boolean silent) {
         boolean hasPerm = permissible.hasPermission(permission);
         if (!silent && !hasPerm && permissible instanceof Conversable)
-            ((Conversable) permissible).sendRawMessage(ChatUtil.color(String.format(Message.PERMISSIONS_NOPERMISSION.getMessage(), permission)));
+            ((Conversable) permissible).sendRawMessage(ChatUtil.color(String.format(Message.GENERAL_NOPERMISSION.getMessage(), permission)));
         return hasPerm;
     }
 
