@@ -26,12 +26,15 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
     @Override
     public void onEnable() {
         bukkitFactionsBootstrap = this;
+        factionsX.enable();
         // Suggest using Paper for better performance
         PaperLib.suggestPaper(this);
+        // Load hooks
         hookManager = HookManager.getInstance();
         hookManager.loadHooks();
-        factionsX.enable();
+        // Load configs
         loadConfig();
+        // Register permissions
         Permission.registerAllPermissions(this.getServer().getPluginManager());
     }
 
