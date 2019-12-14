@@ -29,7 +29,6 @@ public final class FactionsX {
     }
 
     public void enable() {
-        printLogo();
         persistenceEngine = PersistenceEngine.getInstance();
         playerManager = PlayerManager.getInstance();
         factionManager = FactionManager.getInstance();
@@ -38,22 +37,6 @@ public final class FactionsX {
 
     public void disable() {
     }
-
-    // Tell IntelliJ to not auto format this, by enabling formatter markers in comments (Pref->Editor->Code Style)
-    //@formatter:off
-    private void printLogo() {
-        System.out.println(
-                "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛\n" +
-                "⬜⬛⬛⬛⬛⬛⬜⬜⬜⬜⬛⬜⬜⬛⬛⬛⬛⬜⬛⬛⬛⬛⬛⬜⬛⬛⬛⬜⬜⬛⬛⬛⬜⬛⬜⬜⬛⬛⬜⬜⬛⬛⬛⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜\n" +
-                "⬜⬛⬛⬜⬜⬛⬜⬜⬜⬛⬛⬜⬜⬛⬜⬛⬛⬜⬜⬜⬛⬜⬛⬜⬜⬛⬜⬜⬛⬛⬜⬛⬜⬛⬛⬜⬜⬛⬜⬛⬛⬜⬜⬜⬜⬜⬜⬛⬛⬜⬛⬛⬜⬜⬜\n" +
-                "⬜⬛⬜⬜⬜⬜⬜⬜⬛⬜⬛⬜⬜⬛⬜⬜⬛⬜⬜⬜⬛⬜⬜⬜⬜⬛⬜⬜⬛⬜⬜⬛⬜⬛⬛⬛⬜⬛⬜⬛⬛⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜\n" +
-                "⬜⬛⬛⬛⬛⬜⬜⬛⬛⬛⬛⬜⬜⬛⬜⬜⬜⬜⬜⬜⬛⬜⬜⬜⬜⬛⬜⬜⬛⬜⬜⬛⬜⬛⬜⬛⬛⬛⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜\n" +
-                "⬜⬛⬜⬜⬜⬜⬛⬛⬜⬜⬛⬜⬜⬛⬜⬜⬛⬜⬜⬜⬛⬜⬜⬜⬜⬛⬜⬜⬛⬜⬛⬛⬜⬛⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜⬜⬜⬛⬛⬜⬛⬛⬜⬜⬜\n" +
-                "⬜⬛⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬛⬛⬛⬛⬜⬜⬜⬛⬜⬜⬜⬛⬛⬛⬜⬛⬛⬛⬜⬜⬛⬛⬜⬜⬛⬜⬛⬛⬛⬜⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜\n" +
-                "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛\n");
-
-    }
-    //@formatter:on
 
     public FactionsBootstrap getFactionsBootstrap() {
         return factionsBootstrap;

@@ -2,8 +2,8 @@ package io.illyria.factionsx;
 
 import io.illyria.factionsx.core.Permission;
 import io.illyria.factionsx.internal.FactionsBootstrap;
+import io.illyria.factionsx.utils.ChatUtil;
 import io.illyria.factionsx.utils.hooks.HookManager;
-import io.illyria.factionsx.utils.hooks.PlaceholderAPIHook;
 import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -26,9 +26,10 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
     @Override
     public void onEnable() {
         bukkitFactionsBootstrap = this;
-        factionsX.enable();
+        printLogo();
         // Suggest using Paper for better performance
         PaperLib.suggestPaper(this);
+        factionsX.enable();
         // Load hooks
         hookManager = HookManager.getInstance();
         hookManager.loadHooks();
@@ -69,6 +70,24 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
             getServer().getPluginManager().registerEvents(listener, bukkitFactionsBootstrap);
         }
     }
+
+    // Tell IntelliJ to not format this, by enabling formatter markers in comments (Pref-> Editor-> Code Style)
+    // Made this way for easy editing/char replacing, using equal size chars for all consoles compatibility.
+    //@formatter:off
+    private void printLogo() {
+        ChatUtil.sendConsole((""+
+            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛\n" +
+            "⬜⬛⬛⬛⬛⬛⬜⬜⬜⬜⬛⬜⬜⬛⬛⬛⬛⬜⬛⬛⬛⬛⬛⬜⬛⬛⬛⬜⬜⬛⬛⬛⬜⬛⬜⬜⬛⬛⬜⬜⬛⬛⬛⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜\n" +
+            "⬜⬛⬛⬜⬜⬛⬜⬜⬜⬛⬛⬜⬜⬛⬜⬛⬛⬜⬜⬜⬛⬜⬛⬜⬜⬛⬜⬜⬛⬛⬜⬛⬜⬛⬛⬜⬜⬛⬜⬛⬛⬜⬜⬜⬜⬜⬜⬛⬛⬜⬛⬛⬜⬜⬜\n" +
+            "⬜⬛⬜⬜⬜⬜⬜⬜⬛⬜⬛⬜⬜⬛⬜⬜⬛⬜⬜⬜⬛⬜⬜⬜⬜⬛⬜⬜⬛⬜⬜⬛⬜⬛⬛⬛⬜⬛⬜⬛⬛⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜\n" +
+            "⬜⬛⬛⬛⬛⬜⬜⬛⬛⬛⬛⬜⬜⬛⬜⬜⬜⬜⬜⬜⬛⬜⬜⬜⬜⬛⬜⬜⬛⬜⬜⬛⬜⬛⬜⬛⬛⬛⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜\n" +
+            "⬜⬛⬜⬜⬜⬜⬛⬛⬜⬜⬛⬜⬜⬛⬜⬜⬛⬜⬜⬜⬛⬜⬜⬜⬜⬛⬜⬜⬛⬜⬛⬛⬜⬛⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜⬜⬜⬛⬛⬜⬛⬛⬜⬜⬜\n" +
+            "⬜⬛⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬛⬛⬛⬛⬜⬜⬜⬛⬜⬜⬜⬛⬛⬛⬜⬛⬛⬛⬜⬜⬛⬛⬜⬜⬛⬜⬛⬛⬛⬜⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜\n" +
+            "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛\n"
+        ).replace("⬜","&0▉").replace("⬛","&f▉"));
+        ChatUtil.sendConsole("&f➜ &eMade with &4❤ &eby the&f illyria.io Team\n");
+    }
+    //@formatter:on
 
     @Override
     public File getBootstrapDataFolder() {
