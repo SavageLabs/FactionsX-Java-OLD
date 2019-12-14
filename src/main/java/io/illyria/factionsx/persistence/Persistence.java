@@ -11,10 +11,10 @@ public interface Persistence<T> {
 
     void load();
 
-    void save(T t);
+    void save(final T t);
 
     void saveAll();
 
-    void delete(T t);
+    void delete(final T t);
 
 }

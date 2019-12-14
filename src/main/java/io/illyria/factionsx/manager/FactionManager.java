@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-public class FactionManager {
+public final class FactionManager {
 
     private static FactionManager factionManager;
 
@@ -33,6 +33,10 @@ public class FactionManager {
 
     public IFaction getFactionByName(String name) {
         return this.getFactions().stream().parallel().filter(faction -> faction.getName().equals(name)).findFirst().orElse(null);
+    }
+
+    public IFaction getFactionById(String id) {
+        return this.getFactions().stream().parallel().filter(faction -> faction.getId().equals(id)).findFirst().orElse(null);
     }
 
     public void loadFactions() {

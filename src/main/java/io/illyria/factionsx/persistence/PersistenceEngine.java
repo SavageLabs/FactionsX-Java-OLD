@@ -1,9 +1,9 @@
 package io.illyria.factionsx.persistence;
 import io.illyria.factionsx.entity.IFPlayer;
 import io.illyria.factionsx.entity.IFaction;
-import io.illyria.factionsx.persistence.json.JSON;
+import io.illyria.factionsx.persistence.json.Json;
 
-public class PersistenceEngine {
+public final class PersistenceEngine {
     //GETTING FROM CONFIG
     private static PersistenceEngine persistenceEngine = new PersistenceEngine(PersistenceType.JSON);
     private Dispatcher dispatcher;
@@ -14,7 +14,7 @@ public class PersistenceEngine {
     private PersistenceEngine(PersistenceType persistenceType){
         switch (persistenceType) {
             case JSON:
-                dispatcher = new JSON();
+                dispatcher = new Json();
             case MYSQL:
             case MONGODB:
         }

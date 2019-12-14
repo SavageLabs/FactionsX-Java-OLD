@@ -1,57 +1,87 @@
 package io.illyria.factionsx.entity;
 
 import io.illyria.factionsx.core.Role;
+import io.illyria.factionsx.manager.FactionManager;
+import io.illyria.factionsx.manager.PlayerManager;
+import io.illyria.factionsx.utils.hooks.Econ;
+import org.bukkit.Bukkit;
+import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public class FPlayer implements IFPlayer {
+
+    private String id;
+    private String name;
+    private String factionId;
+    private double power;
+    private int kills;
+    private int deaths;
+    private Role role;
+    private boolean bypassing;
+
+    public FPlayer() {
+    }
+
+    public FPlayer(Player player) {
+        this.id = player.getUniqueId().toString();
+        this.name = player.getName();
+        this.power = 0;
+        this.kills = player.getStatistic(Statistic.PLAYER_KILLS);
+        this.deaths = player.getStatistic(Statistic.DEATHS);
+        this.bypassing = false;
+        this.factionId = "1";
+    }
+
     @Override
     public Player getPlayer() {
-        return null;
+        return Bukkit.getPlayer(UUID.fromString(id));
     }
 
     @Override
     public String getId() {
-        return null;
+        return id;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public int getKills() {
-        return 0;
+        return kills;
     }
 
     @Override
     public int getDeaths() {
-        return 0;
+        return deaths;
     }
 
     @Override
     public IFaction getFaction() {
-        return null;
+        return FactionManager.getInstance().getFactionById(factionId);
     }
 
     @Override
     public void setFaction(IFaction faction) {
-
+        this.factionId = faction.getId();
     }
 
     @Override
     public boolean hasFaction() {
-        return false;
+        return !factionId.equals(0);
     }
 
     @Override
     public Role getRole() {
-        return null;
+        return role;
     }
 
     @Override
     public void setRole(Role role) {
-
+        this.role = role;
     }
 
     @Override
@@ -66,22 +96,27 @@ public class FPlayer implements IFPlayer {
 
     @Override
     public void takeMoney(int amount) {
-
+        if (hasMoney(amount)) {
+            Econ.getEconomy().withdrawPlayer(this.getPlayer(), amount);
+        }
     }
 
     @Override
-    public void hasMoney(int amount) {
-
+    public boolean hasMoney(int amount) {
+        if (Econ.getEconomy().getBalance(this.getPlayer()) >= amount) {
+            return true;
+        }
+        return false;
     }
 
     @Override
     public double getPower() {
-        return 0;
+        return power;
     }
 
     @Override
     public void setPower(double power) {
-
+        this.power = power;
     }
 
     @Override
@@ -96,6 +131,6 @@ public class FPlayer implements IFPlayer {
 
     @Override
     public boolean isBypassing() {
-        return false;
+        return bypassing;
     }
 }

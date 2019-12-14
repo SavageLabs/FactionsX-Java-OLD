@@ -35,7 +35,7 @@ public interface IFPlayer {
 
     void takeMoney(int amount);
 
-    void hasMoney(int amount);
+    boolean hasMoney(int amount);
 
     //----------------------------------//
     //   PLAYER POWER RELATED METHODS    //

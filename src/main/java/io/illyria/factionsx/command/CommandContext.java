@@ -16,7 +16,7 @@ public class CommandContext {
 
     private CommandSender commandSender;
     private List<String> args;
-    private String aliasused;
+    private String aliasUsed;
     private Player player;
     private IFPlayer fPlayer;
     private IFaction faction;
@@ -24,7 +24,7 @@ public class CommandContext {
     public CommandContext(CommandSender commandSender, List<String> args, String aliasUsed) {
         this.commandSender = commandSender;
         this.args = args;
-        this.aliasused = aliasUsed;
+        this.aliasUsed = aliasUsed;
         if (commandSender instanceof Player) { this.player = (Player) commandSender; }
         if (commandSender instanceof FPlayer && this.player != null) { this.fPlayer = FactionsX.getFactionsX().getPlayerManager().getFPlayer(player); }
         if (commandSender instanceof FPlayer && this.player != null) { this.faction = this.fPlayer.getFaction(); }
@@ -37,7 +37,7 @@ public class CommandContext {
     public Player getArgAsPlayer(int index, boolean informIfNot) {
         // Using match player in case of typos etc.
         List<Player> players = Bukkit.matchPlayer(args.get(index));
-        if (players.size() == 0 && informIfNot) this.message(Message.COMMAND_PARSING_PLAYERNOTFOUND.getMessage());
+        if (players.size() == 0 && informIfNot) { this.message(Message.COMMAND_PARSING_PLAYERNOTFOUND.getMessage()); }
         return players.get(0);
     }
 
@@ -48,7 +48,6 @@ public class CommandContext {
         }
         return FactionsX.getFactionsX().getPlayerManager().getFPlayer(player);
     }
-
 
     // Uses boxed so user can actually check if the result is null.
     public Integer getArgAsInt(int index, boolean informIfNot) {

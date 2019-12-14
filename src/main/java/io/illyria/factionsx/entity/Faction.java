@@ -21,7 +21,7 @@ public class Faction implements IFaction {
     private double maxPower;
     private Set<IFPlayer> mutedPlayers;
     private Set<IFPlayer> bannedPlayers;
-    private Map<IFPlayer, Role> factionPlayers;
+    private Set<IFPlayer> factionPlayers;
     private IFPlayer factionOwner;
     private Map<RelationParticipator, Relation> pendingRelationRequests;
     private Map<RelationParticipator, Relation> relations;
@@ -186,7 +186,7 @@ public class Faction implements IFaction {
 
     @Override
     public void muteAllPlayers() {
-        this.mutedPlayers.addAll(factionPlayers.keySet());
+        this.mutedPlayers.addAll(factionPlayers);
     }
 
     @Override
@@ -211,7 +211,7 @@ public class Faction implements IFaction {
 
     @Override
     public void addPlayer(IFPlayer player) {
-        this.factionPlayers.put(player, Role.RECRUIT);
+        this.factionPlayers.add(player);
     }
 
     @Override
@@ -221,7 +221,7 @@ public class Faction implements IFaction {
 
     @Override
     public Set<IFPlayer> getPlayers() {
-        return factionPlayers.keySet();
+        return factionPlayers;
     }
 
     @Override
@@ -249,7 +249,7 @@ public class Faction implements IFaction {
 
         Set<IFPlayer> playerResult = new HashSet<>();
 
-        for (IFPlayer player : factionPlayers.keySet()) {
+        for (IFPlayer player : factionPlayers) {
 
             if (player.getRole().equals(role)) {
                 playerResult.add(player);
@@ -261,7 +261,11 @@ public class Faction implements IFaction {
 
     @Override
     public void setPlayerRole(IFPlayer player, Role role) {
-        this.factionPlayers.put(player, role);
+        for (IFPlayer fplayer : factionPlayers) {
+            if (fplayer.equals(player) && fplayer.getFaction().equals(this)) {
+                player.setRole(role);
+            }
+        }
     }
 
     @Override

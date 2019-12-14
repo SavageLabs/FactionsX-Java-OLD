@@ -12,7 +12,7 @@ import io.illyria.factionsx.persistence.PersistenceEngine;
  * Bukkit implementation goes in the implementing Bootstrap class.
  */
 
-public class FactionsX {
+public final class FactionsX {
 
     private static FactionsX factionsX;
 

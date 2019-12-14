@@ -6,20 +6,20 @@ import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.persistence.Dispatcher;
 import io.illyria.factionsx.persistence.PersistenceEngine;
 
-public class JSON implements Dispatcher {
+public final class Json implements Dispatcher {
 
     private PersistenceEngine persistenceEngine = FactionsX.getFactionsX().getPersistenceEngine();
     private Gson gson;
 
-    public JSON() {
+    public Json() {
         gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         setPersistence();
     }
 
     @Override
     public void setPersistence() {
-        persistenceEngine.setFPlayerPersistence(new JSONPlayer());
-        persistenceEngine.setFactionPersistence(new JSONFaction());
+        persistenceEngine.setFPlayerPersistence(new JsonPlayer());
+        persistenceEngine.setFactionPersistence(new JsonFaction());
     }
 
     public Gson getGson() {

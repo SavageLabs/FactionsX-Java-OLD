@@ -15,7 +15,7 @@ import java.io.File;
  * Anything related to bukkit goes here.
  */
 
-public class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBootstrap {
+public final class BukkitFactionsBootstrap extends JavaPlugin implements FactionsBootstrap {
 
     private static BukkitFactionsBootstrap bukkitFactionsBootstrap;
     private FactionsX factionsX = new FactionsX(this);

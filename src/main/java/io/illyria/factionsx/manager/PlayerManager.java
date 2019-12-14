@@ -1,14 +1,16 @@
 package io.illyria.factionsx.manager;
 
+import io.illyria.factionsx.entity.FPlayer;
 import io.illyria.factionsx.entity.IFPlayer;
 import io.illyria.factionsx.persistence.Persistence;
 import io.illyria.factionsx.persistence.PersistenceEngine;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class PlayerManager {
+public final class PlayerManager {
 
     private static PlayerManager playerManager;
 
@@ -42,19 +44,32 @@ public class PlayerManager {
     }
 
     public IFPlayer getFPlayerById(String playerId) {
+
+        IFPlayer fPlayer = null;
+
         for (IFPlayer player : fPlayers) {
-
-            if (player.getName().equals(playerId)) {
-                return player;
+            if (player.getId().equals(playerId)) {
+                fPlayer = player;
             }
-
         }
-        return null;
+
+        if (fPlayer == null) {
+            fPlayer = createFplayer(Bukkit.getPlayer(playerId));
+            fPlayers.add(fPlayer);
+        }
+
+        return fPlayer;
+
     }
 
     public IFPlayer getFPlayer(Player player) {
-        if (player == null) return null;
-        return getFPlayerByName(player.getName());
+        return getFPlayerById(player.getUniqueId().toString());
+    }
+
+    private IFPlayer createFplayer(Player player) {
+        IFPlayer fPlayer = new FPlayer(player);
+        fPlayers.add(fPlayer);
+        return fPlayer;
     }
 
     public void loadPlayers() {

@@ -6,7 +6,7 @@ import io.illyria.factionsx.persistence.Persistence;
 import java.util.Optional;
 import java.util.Set;
 
-public class JSONFaction implements Persistence<IFaction> {
+public final class JsonFaction implements Persistence<IFaction> {
 
     @Override
     public Optional<IFaction> get(String id) {
@@ -24,7 +24,7 @@ public class JSONFaction implements Persistence<IFaction> {
     }
 
     @Override
-    public void save(IFaction iFaction) {
+    public void save(final IFaction iFaction) {
 
     }
 
@@ -34,7 +34,7 @@ public class JSONFaction implements Persistence<IFaction> {
     }
 
     @Override
-    public void delete(IFaction iFaction) {
+    public void delete(final IFaction iFaction) {
 
     }
 }
