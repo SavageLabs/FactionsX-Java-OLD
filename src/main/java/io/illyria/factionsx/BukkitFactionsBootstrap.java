@@ -29,8 +29,8 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
         PaperLib.suggestPaper(this);
         hookManager = HookManager.getInstance();
         hookManager.loadHooks();
-        loadConfig();
         factionsX.enable();
+        loadConfig();
     }
 
     @Override
