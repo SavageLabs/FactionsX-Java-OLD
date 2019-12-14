@@ -29,22 +29,22 @@ public enum Permission {
         return Config.PERMISSION_ROOT_NAME + "." + this.node;
     }
 
-    public void registerAllPermissions(PluginManager pluginManager) {
+    public static void registerAllPermissions(PluginManager pluginManager) {
         Arrays.stream(Permission.values()).forEach(
                 permission ->
                         pluginManager.addPermission(new org.bukkit.permissions.Permission(permission.getFullPermissionNode(), permission.description, permission.permissionDefault))
         );
     }
 
-    public boolean hasPermission(Permissible permissible, Permission permission) {
+    public static boolean hasPermission(Permissible permissible, Permission permission) {
         return permissible.hasPermission(permission.getFullPermissionNode());
     }
 
-    public boolean hasPermission(Permissible permissible, String permission) {
+    public static boolean hasPermission(Permissible permissible, String permission) {
         return permissible.hasPermission(permission);
     }
 
-    public int getMaxPermission(Permissible permissible, Permission permission) {
+    public static int getMaxPermission(Permissible permissible, Permission permission) {
         if (permissible.isOp()) return -1;
 
         String fullBaseNode = permission.getFullPermissionNode();
