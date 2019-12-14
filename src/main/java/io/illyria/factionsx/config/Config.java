@@ -5,6 +5,12 @@ import java.util.List;
 
 public enum Config {
 
+    FACTION_DEFAULT_DESCRIPTION("faction.default.description", "This is your Faction default description"),
+    FACTION_DEFAULT_OPEN("faction.default.open", false),
+    FACTION_DEFAULT_STARTINGPOWER("faction.default.startingpower", 0),
+    FACTION_DEFAULT_MAXPOWER("faction.default.maxpower", -1),
+    FACTION_DEFAULT_MAXMEMBERSIZE("faction.default.maxmembersize", 30),
+
     DEBUG("Debug", false),
 
     PERMISSION_ADMIN("Permissions.perm-admin", "factionsx.admin"),
