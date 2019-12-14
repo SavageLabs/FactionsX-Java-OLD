@@ -3,6 +3,7 @@ package io.illyria.factionsx.utils;
 import io.illyria.factionsx.BukkitFactionsBootstrap;
 import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.Message;
+import io.illyria.factionsx.utils.hooks.HookManager;
 import io.illyria.factionsx.utils.hooks.PlaceholderAPIHook;
 import me.rayzr522.jsonmessage.JSONMessage;
 import org.bukkit.Bukkit;
@@ -33,12 +34,12 @@ public class ChatUtil {
     // Parse PAPI placeholders
 
     public static String parsePAPI(String toParse, OfflinePlayer player) {
-        if (!PlaceholderAPIHook.isSetup()) return toParse;
+        if (!HookManager.getInstance().getEnabledHooks().contains("PlaceholderAPI")) return toParse;
         return PlaceholderAPIHook.getPapiExt().parse(toParse, player);
     }
 
     public static List<String> parsePAPI(List<String> toParse, OfflinePlayer player) {
-        if (!PlaceholderAPIHook.isSetup()) return toParse;
+        if (!HookManager.getInstance().getEnabledHooks().contains("PlaceholderAPI")) return toParse;
         return PlaceholderAPIHook.getPapiExt().parse(toParse, player);
     }
 

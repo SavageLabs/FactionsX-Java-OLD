@@ -69,7 +69,9 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
         return Message.PAPI_ERROR.getMessage();
     }
 
-    public static PlaceholderAPIHook getPapiExt() { return papiExt; }
+    public static PlaceholderAPIHook getPapiExt() {
+        return papiExt;
+    }
 
     public static boolean isSetup() {
         return papiExt != null;

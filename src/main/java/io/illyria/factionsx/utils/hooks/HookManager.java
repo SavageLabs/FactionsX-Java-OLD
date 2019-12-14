@@ -99,8 +99,10 @@ public class HookManager {
     }
 
     public void unregisterHooks() {
-        PlaceholderAPIHook.unreg();
-        EssentialsHook.unreg();
+        if (enabledHooks.contains("PlaceholderAPI"))
+            PlaceholderAPIHook.unreg();
+        if (enabledHooks.contains("Essentials"))
+            EssentialsHook.unreg();
         Econ.unreg();
         enabledHooks.clear();
     }
