@@ -6,8 +6,8 @@ import io.illyria.factionsx.persistence.Persistence;
 import io.illyria.factionsx.persistence.PersistenceEngine;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
 public final class FactionManager {
 
@@ -52,8 +52,12 @@ public final class FactionManager {
     }
 
     public void createFaction(String factionName, String ownerName) {
-        IFaction faction = new Faction(factionName, ownerName);
+        IFaction faction = new Faction(generateFactionId(), factionName, ownerName);
         factions.add(faction);
+    }
+
+    private String generateFactionId() {
+        return UUID.randomUUID().toString();
     }
 
 }

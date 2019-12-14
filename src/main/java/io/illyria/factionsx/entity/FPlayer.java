@@ -2,12 +2,12 @@ package io.illyria.factionsx.entity;
 
 import io.illyria.factionsx.core.Role;
 import io.illyria.factionsx.manager.FactionManager;
-import io.illyria.factionsx.manager.PlayerManager;
 import io.illyria.factionsx.utils.hooks.Econ;
 import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class FPlayer implements IFPlayer {
@@ -132,5 +132,19 @@ public class FPlayer implements IFPlayer {
     @Override
     public boolean isBypassing() {
         return bypassing;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FPlayer fPlayer = (FPlayer) o;
+        return id.equals(fPlayer.id) &&
+                name.equals(fPlayer.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
