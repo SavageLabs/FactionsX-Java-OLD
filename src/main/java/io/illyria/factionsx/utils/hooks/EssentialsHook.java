@@ -51,6 +51,10 @@ public class EssentialsHook {
         return user != null && user.isVanished();
     }
 
+    public static void unreg() {
+        essentials = null;
+    }
+
     public static boolean isSetup() {
         return essentials != null;
     }

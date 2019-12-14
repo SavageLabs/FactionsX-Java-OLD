@@ -41,7 +41,7 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
         return true;
     }
 
-    public void unreg() {
+    static void unreg() {
         if (isSetup())
             PlaceholderAPI.unregisterExpansion(papiExt);
     }

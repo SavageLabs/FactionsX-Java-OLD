@@ -7,6 +7,8 @@ import org.dynmap.markers.MarkerSet;
 
 public class DynmapHook {
 
+    // TO WRITE !! We can do it as an external plugin too, in order to more easily keep up with API changes
+
     public static DynmapAPI dapi = null;
     public static MarkerSet markerset = null;
     private static String markersetId = "io.illyria.factionsx.markerset";

@@ -35,6 +35,10 @@ public class Econ {
         return Config.USE_ECONOMY.getBoolean() && econ != null && econ.isEnabled();
     }
 
+    static void unreg() {
+        econ = null;
+    }
+
     public static boolean isSetup() {
         return econ != null;
     }

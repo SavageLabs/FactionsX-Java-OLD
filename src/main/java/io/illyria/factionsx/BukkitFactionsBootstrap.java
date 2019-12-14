@@ -37,16 +37,12 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
 
     @Override
     public void onDisable() {
-        // Cancel running Tasks, so that it should be PlugMan-safe
+        // Cancel running Tasks, this should happen anyways
         Bukkit.getServer().getScheduler().cancelTasks(this);
-        // Unregister PAPI, so that it should be PlugMan-safe
-        if (PlaceholderAPIHook.isSetup()) {
-            PlaceholderAPIHook.getPapiExt().unreg();
-        }
+        // Unregister hooks
+        hookManager.unregisterHooks();
         // Set the saved instance to null, saving memory
         bukkitFactionsBootstrap = null;
-        // Clearing the enabledHooks list
-        hookManager.getEnabledHooks().clear();
         factionsX.disable();
     }
 

@@ -98,6 +98,13 @@ public class HookManager {
         return false;
     }
 
+    public void unregisterHooks() {
+        PlaceholderAPIHook.unreg();
+        EssentialsHook.unreg();
+        Econ.unreg();
+        enabledHooks.clear();
+    }
+
     public Set<String> getEnabledHooks() {
         return enabledHooks;
     }
