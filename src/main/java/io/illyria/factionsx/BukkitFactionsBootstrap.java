@@ -75,7 +75,7 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
     // Made this way for easy editing/char replacing, using equal size chars for all consoles compatibility.
     //@formatter:off
     private void printLogo() {
-        ChatUtil.sendConsole((""+
+        ChatUtil.sendConsole(("\n"+
             "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛\n" +
             "⬜⬛⬛⬛⬛⬛⬜⬜⬜⬜⬛⬜⬜⬛⬛⬛⬛⬜⬛⬛⬛⬛⬛⬜⬛⬛⬛⬜⬜⬛⬛⬛⬜⬛⬜⬜⬛⬛⬜⬜⬛⬛⬛⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜\n" +
             "⬜⬛⬛⬜⬜⬛⬜⬜⬜⬛⬛⬜⬜⬛⬜⬛⬛⬜⬜⬜⬛⬜⬛⬜⬜⬛⬜⬜⬛⬛⬜⬛⬜⬛⬛⬜⬜⬛⬜⬛⬛⬜⬜⬜⬜⬜⬜⬛⬛⬜⬛⬛⬜⬜⬜\n" +
