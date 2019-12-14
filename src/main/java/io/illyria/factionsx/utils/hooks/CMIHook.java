@@ -5,6 +5,10 @@ import org.bukkit.entity.Player;
 
 public class CMIHook {
 
+    private CMIHook() {
+        throw new AssertionError("Instantiating utility class.");
+    }
+
     public static boolean isVanished(Player player) {
         return CMI.getInstance().getVanishManager().getAllVanished().contains(player.getUniqueId());
     }

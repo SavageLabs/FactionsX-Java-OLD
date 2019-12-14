@@ -67,9 +67,8 @@ public class HookManager {
             }
 
             // SuperVanish/PremiumVanish hook - vanish support
-            if (checkHook("SuperVanish") || checkHook("PremiumVanish")) {
-                new PlaceholderAPIHook(plugin).register();
-            }
+            if (!checkHook("PremiumVanish"))
+                checkHook("SuperVanish");
 
             // dynmap
             if (checkHook("dynmap")) {

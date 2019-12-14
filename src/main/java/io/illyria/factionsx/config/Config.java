@@ -13,6 +13,8 @@ public enum Config {
 
     DEBUG("Debug", false),
 
+    PERMISSION_ROOT_NAME("Permissions.root-name", "factionsx"),
+
     PERMISSION_ADMIN("Permissions.perm-admin", "factionsx.admin"),
 
     ENABLED_WORLDS("GeneralSettings.enabled-worlds", new String[]{

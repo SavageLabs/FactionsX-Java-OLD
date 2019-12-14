@@ -9,6 +9,10 @@ import java.util.UUID;
 
 public class SuperVanishHook {
 
+    private SuperVanishHook() {
+        throw new AssertionError("Instantiating utility class.");
+    }
+
     public static boolean isVanished(Player player) {
         if (!isSetup()) return false;
         return VanishAPI.isInvisible(player);
