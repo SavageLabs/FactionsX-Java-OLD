@@ -43,14 +43,14 @@ public class DiskUtil {
 		FileInputStream fileInputStream = new FileInputStream(file);
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-		byte[] buffer = new byte[4096];
+		byte[] buffer = new byte[(int) file.length()];
 		int read = 0;
 		while ((read = fileInputStream.read(buffer)) != -1)
 			byteArrayOutputStream.write(buffer, 0, read);
 
+		// - Closed to prevent memory leaks
 		byteArrayOutputStream.close();
 		fileInputStream.close();
-
 		return byteArrayOutputStream.toByteArray();
 	}
 }
