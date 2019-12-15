@@ -74,7 +74,7 @@ public class CommandContext {
     }
 
     public void message(String message) {
-        commandSender.sendMessage(ChatUtil.);
+        commandSender.sendMessage(ChatUtil.color(message));
     }
 
 
