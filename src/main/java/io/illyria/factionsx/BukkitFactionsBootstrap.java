@@ -4,6 +4,7 @@ import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.core.Permission;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
+import io.illyria.factionsx.utils.DiskUtil;
 import io.illyria.factionsx.utils.hooks.HookManager;
 import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
@@ -11,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Here is the bukkit implementation of Factions plugin.
