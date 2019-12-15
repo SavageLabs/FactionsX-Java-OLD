@@ -1,0 +1,31 @@
+General:
+  prefix: '&4&lFactionsX &f➤ '
+  prefix-debug: '&7[FactionsX] &e<DEBUG> '
+  prefix-error: '&7[FactionsX] &c<ERRORE> '
+  no-permission: '&7[&4✕&7] &cNon hai i permessi!'
+  no-permission-specific: '&7[&4✕&7] &cDevi avere il permesso &e{perm}&c per poterlo fare!'
+Command-parsing:
+  player-not-found: '&7[&4✕&7] &cGiocatore non trovato.'
+  cannot-reference-yourself: '&7[&4✕&7] &cNon puoi indicare te stesso.'
+  arg-is-not-int: '&7[&4✕&7] &cDevi specificare un numero intero.'
+Command:
+  reload-success: '&7[&a✔&7] &aConfig e Traduzioni ricaricate!'
+Database:
+  invalid-type-selected: '&7[&4✕&7] &cIL TIPO DI DATABASE ''&e{type}&c'' NON ESISTE!
+    &eImpostando il valore default... &cCONTROLLA IL FILE &eCONFIG.YML&c.'
+Hooks:
+  generic-hook-failed: '&7[&4✕&7] &cNon è stato possibile applicare la compatibilità con {plugin}. Il supporto per {plugin} è disabilitato.'
+  economy-hook-failed: '&7[&4✕&7] &cSupporto per l''Economia disabilitato! Errore nel collegarsi a Vault, o nessun plugin che gestisce l''Economia trovato!'
+  essentials-hook-failed: '&7[&4✕&7] &cSupporto per Essentials disabilitato! Errore nel collegarsi a Essentials, oppure potresti avere una versione vecchia! &eSolo EssentialsX
+    è supportato, puoi scaricarlo da qui -> https://www.spigotmc.org/resources/essentialsx.9089/'
+  dynmap-hook-failed: '&7[&4✕&7] &cSupporto per dynmap disabilitato! Errore nel collegarsi a DynmapAPI.'
+  placeholder-generic-error: '&c&oErrore'
+Time:
+  days: giorni
+  day: giorno
+  hours: ore
+  hour: ora
+  minutes: minuti
+  minute: minuto
+  seconds: secondi
+  second: secondo
