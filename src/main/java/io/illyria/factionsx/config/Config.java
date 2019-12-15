@@ -35,12 +35,12 @@ public enum Config {
     VANISH_IGNORE("Vanish.ignore-vanished-players", true),
     VANISH_CHECK_CANSEE("Vanish.use-cansee-check", false),
 
-    BACKEND_TYPE("Backend.type", "JSON"),
-    BACKEND_HOST("Backend.host", ""),
-    BACKEND_("Backend.dbname", ""),
-    BACKEND_USER("Backend.user", ""),
-    BACKEND_PASSWORD("Backend.password",""),
-    BACKEND_PORT("Backend.port", ""),
+    BACKEND_TYPE("Database.type", "JSON"),
+    BACKEND_HOST("Database.host", ""),
+    BACKEND_DBNAME("Database.dbname", ""),
+    BACKEND_USER("Database.user", ""),
+    BACKEND_PASSWORD("Database.password",""),
+    BACKEND_PORT("Database.port", ""),
 
     DEBUG("Debug", false);
 

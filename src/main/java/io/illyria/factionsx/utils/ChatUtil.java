@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Methods related to messages, actionbars, titles et similia.
@@ -54,8 +55,19 @@ public class ChatUtil {
             Bukkit.getConsoleSender().sendMessage(color(Message.PREFIX_DEBUG.getMessage() + str));
     }
 
+    public static String stripColor(final String input) {
+        if (input == null) return null;
+        char colorChar = '\u00A7';
+        return Pattern.compile("(?i)" + colorChar + "[0-9A-FK-OR]").matcher(input).replaceAll("");
+    }
+
+
     public static void error(String str) {
-        Bukkit.getConsoleSender().sendMessage(color(Message.PREFIX_ERROR.getMessage() + str));
+        try {
+            Bukkit.getConsoleSender().sendMessage(color(Message.PREFIX_ERROR.getMessage() + str));
+        } catch (Exception ex) {
+            System.out.println(stripColor(Message.PREFIX_ERROR.getMessage() + str));
+        }
     }
 
     // Send Title only

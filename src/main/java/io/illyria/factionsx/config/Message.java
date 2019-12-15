@@ -19,7 +19,7 @@ public enum Message {
 
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
-    ERROR_BACKEND_INVALID("Backend.invalid-type-selected", "&7[&4✕&7] &cTHAT BACKEND TYPE DOES NOT EXIST! &eSetting Default Backend type... &cCHECK &eCONFIG.YML&c FILE."),
+    ERROR_BACKEND_INVALID("Database.invalid-type-selected", "&7[&4✕&7] &cTHAT DATABASE TYPE DOES NOT EXIST! &eSetting Default Database type... &cCHECK &eCONFIG.YML&c FILE."),
 
     ERROR_HOOK_FAILED("Hooks.generic-hook-failed", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),
     ERROR_ECON_INVALID("Hooks.economy-hook-failed", "&7[&4✕&7] &cEconomy support has been disabled! Error while hooking to Vault, or no Economy Service was found!"),
