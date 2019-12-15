@@ -1,7 +1,11 @@
 package io.illyria.factionsx.persistence;
+import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.entity.IFPlayer;
 import io.illyria.factionsx.entity.IFaction;
 import io.illyria.factionsx.persistence.json.Json;
+import org.bukkit.Bukkit;
+
+import java.util.logging.Level;
 
 public final class PersistenceEngine {
     //GETTING FROM CONFIG
@@ -23,7 +27,14 @@ public final class PersistenceEngine {
 
     public static PersistenceEngine getInstance() {
         if (persistenceEngine == null) {
-            persistenceEngine = new PersistenceEngine(PersistenceType.JSON);
+            PersistenceType persistenceType;
+            try {
+                persistenceType = PersistenceType.valueOf(Config.BACKEND_TYPE.toString());
+            } catch (IllegalArgumentException exception) {
+                Bukkit.getLogger().log(Level.WARNING, "THAT BACKEND TYPE DOES NOT EXIST, SETTING DEFAULT BACKEND TYPE. CHECK CONFIG.YML FILE.");
+                persistenceType = PersistenceType.JSON;
+            }
+            persistenceEngine = new PersistenceEngine(persistenceType);
         }
         return persistenceEngine;
     }
