@@ -42,25 +42,15 @@ public class DiskUtil {
 	public static byte[] readFile(File file) throws IOException, FileNotFoundException {
 		FileInputStream fileInputStream = new FileInputStream(file);
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-		try {
-			byte[] buffer = new byte[4096];
-			int read = 0;
-			while ((read = fileInputStream.read(buffer)) != -1)
-				byteArrayOutputStream.write(buffer, 0, read);
 
-		} finally {
-			try {
-				if (byteArrayOutputStream != null)
-					byteArrayOutputStream.close();
-			} catch (IOException e) {
-			}
+		byte[] buffer = new byte[4096];
+		int read = 0;
+		while ((read = fileInputStream.read(buffer)) != -1)
+			byteArrayOutputStream.write(buffer, 0, read);
 
-			try {
-				if (fileInputStream != null)
-					fileInputStream.close();
-			} catch (IOException e) {
-			}
-		}
+		byteArrayOutputStream.close();
+		fileInputStream.close();
+
 		return byteArrayOutputStream.toByteArray();
 	}
 }
