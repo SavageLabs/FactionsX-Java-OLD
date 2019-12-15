@@ -7,16 +7,14 @@ import org.bukkit.entity.Player;
 
 public class CommandRequirements {
 
-    private final Permission permission;
-    private final boolean asPlayer;
-    private final boolean asFactionMember;
-    private final boolean withRole;
+    private Permission permission;
+    private boolean asPlayer;
+    private boolean asFactionMember;
 
-    public CommandRequirements(Permission permission, boolean asPlayer, boolean asFactionMember, boolean withRole) {
+    public CommandRequirements(Permission permission, boolean asPlayer, boolean asFactionMember) {
         this.permission = permission;
         this.asPlayer = asPlayer;
         this.asFactionMember = asFactionMember;
-        this.withRole = withRole;
     }
 
 
@@ -39,10 +37,36 @@ public class CommandRequirements {
             if (context.getFPlayer() == null || !context.getFPlayer().hasFaction()) {
                 if (informIfNot) context.message(Message.COMMAND_REQUIREMENTS_NOTFACTIONMEMBER.getMessage());
             }
+            return false;
+        }
+        // They passed the check!
+        return true;
+    }
+
+    public static class Builder {
+
+        private Permission permission;
+        private boolean asPlayer;
+        private boolean asFactionMember;
+
+        public Builder withPermission(Permission permission) {
+            this.permission = permission;
+            return this;
         }
 
+        public Builder asPlayer(boolean asPlayer) {
+            this.asPlayer = asPlayer;
+            return this;
+        }
 
+        public Builder asFactionMember(boolean asFactionMember) {
+            this.asFactionMember = asFactionMember;
+            return this;
+        }
 
+        public CommandRequirements build() {
+            return new CommandRequirements(permission, asPlayer, asFactionMember);
+        }
 
     }
 
