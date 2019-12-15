@@ -20,7 +20,8 @@ public enum Message {
     COMMAND_REQUIREMENTS_NOTPLAYER("Command-requirements.not-player", "&7[&4✕&7] &cYou need to be a player to execute this command."),
     COMMAND_REQUIREMENTS_NOTFACTIONMEMBER("Command-requirements.not-faction-member", "&7[&4✕&7] &cYou need to be a faction member to execute this command."),
     COMMAND_REQUIREMENTS_NOTLEADER("Command-requirements.not-faction-leader", "&7[&4✕&7] &cYou need to be a faction leader to execute this command."),
-
+    COMMAND_REQUIREMENTS_TOOFEWARGS("Command-requirements.not-enough-args", "&7[&4✕&7] &cNot enough arguments specified."),
+    COMMAND_REQUIREMENTS_TOOMANYARGS("Command-requirements.too-many-args", "&7[&4✕&7] &cToo many arguments specified."),
 
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
