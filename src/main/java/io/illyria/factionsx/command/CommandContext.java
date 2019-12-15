@@ -74,7 +74,12 @@ public class CommandContext {
     }
 
     public void message(String message) {
-        commandSender.sendMessage(ChatUtil.color(message));
+        commandSender.sendMessage(ChatUtil.);
     }
+
+
+    public IFPlayer getFPlayer() { return this.fPlayer; }
+
+    public CommandSender getCommandSender() { return this.commandSender; }
 
 }
