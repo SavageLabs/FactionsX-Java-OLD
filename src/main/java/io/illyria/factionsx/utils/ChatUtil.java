@@ -1,6 +1,7 @@
 package io.illyria.factionsx.utils;
 
 import io.illyria.factionsx.BukkitFactionsBootstrap;
+import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.utils.hooks.HookManager;
@@ -47,27 +48,27 @@ public class ChatUtil {
     // Console Feedback messages
 
     public static void sendConsole(String str) {
-        Bukkit.getConsoleSender().sendMessage(color(str));
+        try {
+            Bukkit.getConsoleSender().sendMessage(color(str));
+        } catch (Exception ex) { // no api for this? strip color and println
+            System.out.println(stripColor(str));
+        }
     }
 
     public static void debug(String str) {
         if (Config.DEBUG.getBoolean())
-            Bukkit.getConsoleSender().sendMessage(color(Message.PREFIX_DEBUG.getMessage() + str));
+            sendConsole(Message.PREFIX_DEBUG.getMessage() + str);
     }
 
-    public static String stripColor(final String input) {
+    public static void error(String str) {
+        sendConsole(Message.PREFIX_ERROR.getMessage() + str);
+    }
+
+    // StripColor method, independent from ChatColor, same regEx
+    private static String stripColor(final String input) {
         if (input == null) return null;
         char colorChar = '\u00A7';
         return Pattern.compile("(?i)" + colorChar + "[0-9A-FK-OR]").matcher(input).replaceAll("");
-    }
-
-
-    public static void error(String str) {
-        try {
-            Bukkit.getConsoleSender().sendMessage(color(Message.PREFIX_ERROR.getMessage() + str));
-        } catch (Exception ex) {
-            System.out.println(stripColor(Message.PREFIX_ERROR.getMessage() + str));
-        }
     }
 
     // Send Title only
