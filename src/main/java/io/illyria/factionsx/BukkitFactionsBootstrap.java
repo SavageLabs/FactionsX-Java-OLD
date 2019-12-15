@@ -86,7 +86,7 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
             "⬜⬛⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬛⬛⬛⬛⬜⬜⬜⬛⬜⬜⬜⬛⬛⬛⬜⬛⬛⬛⬜⬜⬛⬛⬜⬜⬛⬜⬛⬛⬛⬜⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜\n" +
             "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛\n"
         ).replace("⬜","&0█").replace("⬛","&f█"));
-        ChatUtil.sendConsole("&f&l> &eMade with &4♥ &eby the&f illyria.io Team\n");
+        ChatUtil.sendConsole("\n&f&l> &eMade with &4♥ &eby the&f illyria.io Team\n");
     }
     //@formatter:on
 

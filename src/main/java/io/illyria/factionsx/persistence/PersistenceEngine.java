@@ -29,9 +29,9 @@ public final class PersistenceEngine {
         if (persistenceEngine == null) {
             PersistenceType persistenceType;
             try {
-                persistenceType = PersistenceType.valueOf(Config.BACKEND_TYPE.toString());
+                persistenceType = PersistenceType.valueOf(Config.BACKEND_TYPE.getString());
             } catch (IllegalArgumentException exception) {
-                ChatUtil.error(Message.ERROR_BACKEND_INVALID.getMessage());
+                ChatUtil.error(Message.ERROR_BACKEND_INVALID.getMessage().replace("{type}", Config.BACKEND_TYPE.getString()));
                 persistenceType = PersistenceType.JSON;
             }
             persistenceEngine = new PersistenceEngine(persistenceType);
