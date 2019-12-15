@@ -5,6 +5,7 @@ import java.util.List;
 
 public enum Config {
 
+    LOCALE("General.language-file", "messages_en"),
     USE_PARTICLES("General.use-particles", true),
     USE_HOLOGRAMS("General.use-holograms", true),
     USE_ANIMATIONS("General.use-animations", true),

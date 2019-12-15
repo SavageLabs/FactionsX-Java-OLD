@@ -17,8 +17,8 @@ public class ConfigManager {
 
     private ConfigManager(FactionsBootstrap plugin) {
         this.plugin = plugin;
-        addFile(new MessageFile(plugin));
         addFile(new ConfigFile(plugin));
+        addFile(new MessageFile(plugin));
     }
 
     public static ConfigManager getInstance() {

@@ -29,10 +29,10 @@ public final class FactionsX {
     }
 
     public void enable() {
+        configManager = ConfigManager.getInstance();
         persistenceEngine = PersistenceEngine.getInstance();
         playerManager = PlayerManager.getInstance();
         factionManager = FactionManager.getInstance();
-        configManager = ConfigManager.getInstance();
     }
 
     public void disable() {
@@ -59,7 +59,7 @@ public final class FactionsX {
     }
 
     public ConfigManager getConfigManager() {
-        return configManager;
+        return configManager != null ? configManager : ConfigManager.getInstance();
     }
 }
 

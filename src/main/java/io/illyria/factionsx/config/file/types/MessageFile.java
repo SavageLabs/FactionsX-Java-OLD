@@ -1,5 +1,6 @@
 package io.illyria.factionsx.config.file.types;
 
+import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.config.file.CustomFile;
 import io.illyria.factionsx.internal.FactionsBootstrap;
@@ -11,7 +12,7 @@ public class MessageFile extends CustomFile {
     private FactionsBootstrap instance;
 
     public MessageFile(FactionsBootstrap instance) {
-        super(instance, "");
+        super(instance, "Translations");
         this.instance = instance;
         for (Message message : Message.values()) {
             if (message.getMessages() != null) {
@@ -41,6 +42,6 @@ public class MessageFile extends CustomFile {
 
     @Override
     public String getName() {
-        return "messages";
+        return Config.LOCALE.getString();
     }
 }

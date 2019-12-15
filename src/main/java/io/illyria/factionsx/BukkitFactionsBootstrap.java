@@ -1,5 +1,6 @@
 package io.illyria.factionsx;
 
+import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.core.Permission;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
@@ -29,12 +30,12 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
         printLogo();
         // Suggest using Paper for better performance
         PaperLib.suggestPaper(this);
+        // Load configs
+        loadConfig();
         factionsX.enable();
         // Load hooks
         hookManager = HookManager.getInstance();
         hookManager.loadHooks();
-        // Load configs
-        loadConfig();
         // Register permissions
         Permission.registerAllPermissions(this.getServer().getPluginManager());
     }
@@ -62,7 +63,7 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
 
     public void loadConfig() {
         factionsX.getConfigManager().getFileMap().get("config").init();
-        factionsX.getConfigManager().getFileMap().get("messages").init();
+        factionsX.getConfigManager().getFileMap().get(Config.LOCALE.getString()).init();
     }
 
     private void registerListeners(Listener... listeners) {
@@ -84,8 +85,8 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
             "⬜⬛⬜⬜⬜⬜⬛⬛⬜⬜⬛⬜⬜⬛⬜⬜⬛⬜⬜⬜⬛⬜⬜⬜⬜⬛⬜⬜⬛⬜⬛⬛⬜⬛⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜⬜⬜⬛⬛⬜⬛⬛⬜⬜⬜\n" +
             "⬜⬛⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬛⬛⬛⬛⬜⬜⬜⬛⬜⬜⬜⬛⬛⬛⬜⬛⬛⬛⬜⬜⬛⬛⬜⬜⬛⬜⬛⬛⬛⬜⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜\n" +
             "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛\n"
-        ).replace("⬜","&0▉").replace("⬛","&f▉"));
-        ChatUtil.sendConsole("&f➜ &eMade with &4❤ &eby the&f illyria.io Team\n");
+        ).replace("⬜","&0█").replace("⬛","&f█"));
+        ChatUtil.sendConsole("&f&l> &eMade with &4♥ &eby the&f illyria.io Team\n");
     }
     //@formatter:on
 
