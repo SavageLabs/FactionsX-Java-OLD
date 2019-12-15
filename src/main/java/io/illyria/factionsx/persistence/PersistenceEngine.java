@@ -1,11 +1,11 @@
 package io.illyria.factionsx.persistence;
+
 import io.illyria.factionsx.config.Config;
+import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.entity.IFPlayer;
 import io.illyria.factionsx.entity.IFaction;
 import io.illyria.factionsx.persistence.json.Json;
-import org.bukkit.Bukkit;
-
-import java.util.logging.Level;
+import io.illyria.factionsx.utils.ChatUtil;
 
 public final class PersistenceEngine {
     //GETTING FROM CONFIG
@@ -15,7 +15,7 @@ public final class PersistenceEngine {
     private Persistence<IFPlayer> fPlayerPersistence;
     private Persistence<IFaction> factionPersistence;
 
-    private PersistenceEngine(PersistenceType persistenceType){
+    private PersistenceEngine(PersistenceType persistenceType) {
         switch (persistenceType) {
             case JSON:
                 dispatcher = new Json();
@@ -31,7 +31,7 @@ public final class PersistenceEngine {
             try {
                 persistenceType = PersistenceType.valueOf(Config.BACKEND_TYPE.toString());
             } catch (IllegalArgumentException exception) {
-                Bukkit.getLogger().log(Level.WARNING, "THAT BACKEND TYPE DOES NOT EXIST, SETTING DEFAULT BACKEND TYPE. CHECK CONFIG.YML FILE.");
+                ChatUtil.error(Message.ERROR_BACKEND_INVALID.getMessage());
                 persistenceType = PersistenceType.JSON;
             }
             persistenceEngine = new PersistenceEngine(persistenceType);
@@ -48,7 +48,9 @@ public final class PersistenceEngine {
         return fPlayerPersistence;
     }
 
-    public Persistence<IFaction> getFactionPersitence() { return factionPersistence; }
+    public Persistence<IFaction> getFactionPersitence() {
+        return factionPersistence;
+    }
 
     public Dispatcher getDispatcher() {
         return dispatcher;

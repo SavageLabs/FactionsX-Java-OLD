@@ -19,12 +19,13 @@ public enum Message {
 
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
+    ERROR_BACKEND_INVALID("Backend.invalid-type-selected", "&7[&4✕&7] &cTHAT BACKEND TYPE DOES NOT EXIST! &eSetting Default Backend type... &cCHECK &eCONFIG.YML&c FILE."),
+
     ERROR_HOOK_FAILED("Hooks.generic-hook-failed", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),
     ERROR_ECON_INVALID("Hooks.economy-hook-failed", "&7[&4✕&7] &cEconomy support has been disabled! Error while hooking to Vault, or no Economy Service was found!"),
     ERROR_ESSENTIALS_INVALID("Hooks.essentials-hook-failed", "&7[&4✕&7] &cEssentials support has been disabled! Error while hooking to Essentials, or you may have an outdated version! &eOnly EssentialsX is supported, you can download it from here -> https://www.spigotmc.org/resources/essentialsx.9089/"),
     ERROR_DYNMAP_INVALID("Hooks.dynmap-hook-failed", "&7[&4✕&7] &cDynmap support has been disabled! Error while trying to get DynmapAPI"),
-
-    PAPI_ERROR("Placeholder.generic-error", "&c&oerror"),
+    ERROR_PAPI_INVALID("Hooks.placeholder-generic-error", "&c&oError"),
 
     TIME_DAYS("Time.days", "days"),
     TIME_DAY("Time.day", "day"),
