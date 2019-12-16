@@ -42,6 +42,6 @@ public class MessageFile extends CustomFile {
 
     @Override
     public String getName() {
-        return Config.LOCALE.getString();
+        return "messages_" + Config.LOCALE.getString();
     }
 }
