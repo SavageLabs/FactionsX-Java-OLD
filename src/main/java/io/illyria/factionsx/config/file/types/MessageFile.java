@@ -3,11 +3,12 @@ package io.illyria.factionsx.config.file.types;
 import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.config.file.CustomFile;
+import io.illyria.factionsx.config.file.CustomYamlFile;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
 import org.bukkit.ChatColor;
 
-public class MessageFile extends CustomFile {
+public class MessageFile extends CustomYamlFile {
 
     private FactionsBootstrap instance;
 
