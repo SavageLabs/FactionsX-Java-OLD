@@ -1,6 +1,7 @@
 package io.illyria.factionsx.utils;
 
 import io.illyria.factionsx.FactionsX;
+import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -23,7 +24,7 @@ public class FileUtil {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
-                ChatUtil.error("&cCould not write file  &e" + pathToFile);
+                ChatUtil.error(Message.ERROR_FILE_IO.getMessage().replace("{file}", pathToFile));
                 ex.printStackTrace();
                 return null;
             }
@@ -32,6 +33,7 @@ public class FileUtil {
         try {
             itemFile.load(file);
         } catch (IOException | InvalidConfigurationException | NullPointerException ex) {
+            ChatUtil.error(Message.ERROR_FILE_LOAD.getMessage().replace("{file}", pathToFile));
             ex.printStackTrace();
             return null;
         }
@@ -40,7 +42,7 @@ public class FileUtil {
         return itemMap;
     }
 
-    public static void loadLocale(FactionsBootstrap plugin, String locale) throws IOException {
+    public static void loadLocale(FactionsBootstrap plugin, String locale) {
         String subFolder = "Translations";
         File folder = new File(FactionsX.getFactionsX().getFactionsBootstrap().getBootstrapDataFolder(), subFolder);
         if (!folder.exists()) {
@@ -51,7 +53,13 @@ public class FileUtil {
         try (InputStreamReader isr = new InputStreamReader(((JavaPlugin) plugin).getResource("messages_" + locale + ".yml"), inputCharset)) {
             defaultLocale.load(isr);
         } catch (InvalidConfigurationException ex) {
+            ChatUtil.error(Message.ERROR_FILE_LOAD.getMessage().replace("{file}", "messages_" + locale + ".yml"));
             ex.printStackTrace();
+            return;
+        } catch (IOException ex) {
+            ChatUtil.error(Message.ERROR_FILE_IO.getMessage().replace("{file}", "messages_" + locale + ".yml"));
+            ex.printStackTrace();
+            return;
         }
         Map<YamlConfiguration, File> langMap = getYamlConfiguration(FactionsX.getFactionsX().getFactionsBootstrap().getBootstrapDataFolder() + File.separator + subFolder + File.separator + "messages_" + locale + ".yml");
         if (langMap == null) {
@@ -66,10 +74,11 @@ public class FileUtil {
         langYaml.options().copyDefaults(true);
         try {
             langYaml.save(langFile);
-        } catch (IOException | NullPointerException e) {
-            e.printStackTrace();
+        } catch (IOException | NullPointerException ex) {
+            ChatUtil.error(Message.ERROR_FILE_IO.getMessage().replace("{file}", "messages_" + locale + ".yml"));
+            ex.printStackTrace();
+            return;
         }
-
     }
 
 }
