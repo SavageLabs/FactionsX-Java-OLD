@@ -19,6 +19,9 @@ public enum Message {
 
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
+    ERROR_FILE_IO("File.io-error", "&7[&4✕&7] &cCould not write file {file}! &eCaused by IO Exception."),
+    ERROR_FILE_LOAD("File.invalid-format", "&7[&4✕&7] &cCould not write file {file}! &eInvalid formatting."),
+
     ERROR_BACKEND_INVALID("Database.invalid-type-selected", "&7[&4✕&7] &cDATABASE TYPE '&e{type}&c' DOES NOT EXIST! &eSetting Default Database type... &cCHECK &eCONFIG.YML&c FILE."),
 
     ERROR_HOOK_FAILED("Hooks.generic-hook-failed", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),

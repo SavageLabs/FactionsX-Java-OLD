@@ -8,11 +8,20 @@ import io.illyria.factionsx.utils.DiskUtil;
 import io.illyria.factionsx.utils.hooks.HookManager;
 import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Here is the bukkit implementation of Factions plugin.
@@ -65,7 +74,7 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
 
     public void loadConfig() {
         factionsX.getConfigManager().getFileMap().get("config").init();
-        factionsX.getConfigManager().getFileMap().get(Config.LOCALE.getString()).init();
+        factionsX.getConfigManager().getFileMap().get("messages_" + Config.LOCALE.getString()).init();
     }
 
     private void registerListeners(Listener... listeners) {

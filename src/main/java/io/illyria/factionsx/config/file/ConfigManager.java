@@ -4,6 +4,7 @@ import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.config.file.types.ConfigFile;
 import io.illyria.factionsx.config.file.types.MessageFile;
 import io.illyria.factionsx.internal.FactionsBootstrap;
+import io.illyria.factionsx.utils.FileUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,7 @@ public class ConfigManager {
     private ConfigManager(FactionsBootstrap plugin) {
         this.plugin = plugin;
         addFile(new ConfigFile(plugin));
+        FileUtil.loadLocale(plugin, "it");
         addFile(new MessageFile(plugin));
     }
 
@@ -28,7 +30,7 @@ public class ConfigManager {
         return configManager;
     }
 
-    private void addFile(CustomFile file) {
+    public void addFile(CustomFile file) {
         fileMap.put(file.getName(), file);
         file.init();
     }
