@@ -2,40 +2,30 @@ package io.illyria.factionsx.manager;
 
 import io.illyria.factionsx.entity.FPlayer;
 import io.illyria.factionsx.entity.IFPlayer;
-import io.illyria.factionsx.persistence.Persistence;
-import io.illyria.factionsx.persistence.PersistenceEngine;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public final class PlayerManager {
-
-    private static PlayerManager playerManager;
+public final class PlayerManager extends AbstractManager<IFPlayer> {
 
     private Set<IFPlayer> fPlayers;
-    private Persistence<IFPlayer> playerPersistence = PersistenceEngine.getInstance().getfPlayerPersistence();
 
-    private PlayerManager() {
+    public PlayerManager() {
         fPlayers = new HashSet<>();
     }
 
-    public static PlayerManager getInstance() {
-        if (playerManager == null) {
-            playerManager = new PlayerManager();
-        }
-        return playerManager;
-    }
-
-    public Set<IFPlayer> getFPlayers() {
+    @Override
+    public Set<IFPlayer> getAll() {
         return fPlayers;
     }
 
-    public IFPlayer getFPlayerByName(String playerName) {
+    @Override
+    public IFPlayer getByName(String name) {
         for (IFPlayer player : fPlayers) {
 
-            if (player.getName().equals(playerName)) {
+            if (player.getName().equals(name)) {
                 return player;
             }
 
@@ -43,27 +33,22 @@ public final class PlayerManager {
         return null;
     }
 
-    public IFPlayer getFPlayerById(String playerId) {
-
+    @Override
+    public IFPlayer getById(String id) {
         IFPlayer fPlayer = null;
 
         for (IFPlayer player : fPlayers) {
-            if (player.getId().equals(playerId)) {
+            if (player.getId().equals(id)) {
                 fPlayer = player;
             }
         }
 
         if (fPlayer == null) {
-            fPlayer = createFplayer(Bukkit.getPlayer(playerId));
+            fPlayer = createFplayer(Bukkit.getPlayer(id));
             fPlayers.add(fPlayer);
         }
 
         return fPlayer;
-
-    }
-
-    public IFPlayer getFPlayer(Player player) {
-        return getFPlayerById(player.getUniqueId().toString());
     }
 
     private IFPlayer createFplayer(Player player) {
@@ -72,16 +57,13 @@ public final class PlayerManager {
         return fPlayer;
     }
 
-    public void loadPlayers() {
-        fPlayers = playerPersistence.getAll();
+    @Override
+    public void save() {
+        persistenceEngine.getfPlayerPersistence().saveAll();
     }
 
-    public void savePlayers() {
-        playerPersistence.saveAll();
+    @Override
+    public void load() {
+        fPlayers = persistenceEngine.getfPlayerPersistence().getAll();
     }
-
-    public void savePlayer(IFPlayer player) {
-        playerPersistence.save(player);
-    }
-
 }
