@@ -2,53 +2,42 @@ package io.illyria.factionsx.manager;
 
 import io.illyria.factionsx.entity.Faction;
 import io.illyria.factionsx.entity.IFaction;
-import io.illyria.factionsx.persistence.Persistence;
-import io.illyria.factionsx.persistence.PersistenceEngine;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-public final class FactionManager {
+public final class FactionManager extends AbstractManager<IFaction> {
 
-    private static FactionManager factionManager;
-
-    private Persistence<IFaction> factionPersistence = PersistenceEngine.getInstance().getFactionPersitence();
     private Set<IFaction> factions;
 
-    private FactionManager() {
+    public FactionManager() {
         factions = new HashSet<>();
     }
 
-    public static FactionManager getInstance() {
-        if (factionManager == null) {
-            factionManager = new FactionManager();
-        }
-        return factionManager;
-    }
-
-    public Set<IFaction> getFactions() {
+    @Override
+    public Set<IFaction> getAll() {
         return factions;
     }
 
-    public IFaction getFactionByName(String name) {
-        return this.getFactions().stream().parallel().filter(faction -> faction.getName().equals(name)).findFirst().orElse(null);
+    @Override
+    public IFaction getByName(String name) {
+        return this.getAll().stream().parallel().filter(faction -> faction.getName().equals(name)).findFirst().orElse(null);
     }
 
-    public IFaction getFactionById(String id) {
-        return this.getFactions().stream().parallel().filter(faction -> faction.getId().equals(id)).findFirst().orElse(null);
+    @Override
+    public IFaction getById(String id) {
+        return this.getAll().stream().parallel().filter(faction -> faction.getId().equals(id)).findFirst().orElse(null);
     }
 
-    public void loadFactions() {
-       factions = factionPersistence.getAll();
+    @Override
+    public void load() {
+       factions = persistenceEngine.getFactionPersitence().getAll();
     }
 
-    public void saveFactions() {
-        factionPersistence.saveAll();
-    }
-
-    public void saveFaction(IFaction faction) {
-        factionPersistence.save(faction);
+    @Override
+    public void save() {
+        persistenceEngine.getFactionPersitence().saveAll();
     }
 
     public void createFaction(String factionName, String ownerName) {

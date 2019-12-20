@@ -5,26 +5,13 @@ import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.core.Permission;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
-import io.illyria.factionsx.utils.DiskUtil;
 import io.illyria.factionsx.utils.hooks.HookManager;
 import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
-import org.bukkit.command.PluginCommand;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
-
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Here is the bukkit implementation of Factions plugin.
  * Anything related to bukkit goes here.
@@ -52,11 +39,6 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
         hookManager.loadHooks();
         // Register permissions
         Permission.registerAllPermissions(this.getServer().getPluginManager());
-        // Register the command.
-        this.factionsBaseCommand = new FBaseCommand();
-        PluginCommand factionsxCommand = this.getCommand("factionsx");
-        if (factionsxCommand != null) factionsxCommand.setExecutor(factionsBaseCommand);
-        else ChatUtil.sendConsole("Something went wrong, the `factionsx` command could not be found in the plugin.yml.");
     }
 
     @Override

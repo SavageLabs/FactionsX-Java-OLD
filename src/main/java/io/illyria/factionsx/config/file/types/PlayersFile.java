@@ -1,6 +1,7 @@
 package io.illyria.factionsx.config.file.types;
 
 import io.illyria.factionsx.config.file.CustomJsonFile;
+import io.illyria.factionsx.config.file.ICustomFile;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 
 public class PlayersFile extends CustomJsonFile {
@@ -13,7 +14,7 @@ public class PlayersFile extends CustomJsonFile {
     }
 
     @Override
-    public Object init() {
+    public ICustomFile init() {
         return this;
     }
 

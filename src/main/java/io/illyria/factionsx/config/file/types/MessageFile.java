@@ -4,6 +4,7 @@ import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.config.file.CustomFile;
 import io.illyria.factionsx.config.file.CustomYamlFile;
+import io.illyria.factionsx.config.file.ICustomFile;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
 import org.bukkit.ChatColor;
@@ -13,7 +14,7 @@ public class MessageFile extends CustomYamlFile {
     private FactionsBootstrap instance;
 
     public MessageFile(FactionsBootstrap instance) {
-        super(instance, "Translations");
+        super(instance, "translations");
         this.instance = instance;
         for (Message message : Message.values()) {
             if (message.getMessages() != null) {
@@ -29,7 +30,8 @@ public class MessageFile extends CustomYamlFile {
         saveConfig();
     }
 
-    public MessageFile init() {
+    @Override
+    public ICustomFile init() {
         this.reloadConfig();
         for (Message message : Message.values()) {
             if (message.getMessages() == null) {

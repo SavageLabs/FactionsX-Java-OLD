@@ -2,12 +2,7 @@ package io.illyria.factionsx.persistence.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import io.illyria.factionsx.FactionsX;
-import io.illyria.factionsx.entity.IFPlayer;
-import io.illyria.factionsx.entity.IFaction;
 import io.illyria.factionsx.persistence.Dispatcher;
-import io.illyria.factionsx.persistence.Persistence;
-import io.illyria.factionsx.persistence.PersistenceEngine;
 
 public final class Json extends Dispatcher {
 

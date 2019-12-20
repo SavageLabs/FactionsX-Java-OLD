@@ -1,10 +1,10 @@
 package io.illyria.factionsx.entity;
 
+import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.core.Role;
 import io.illyria.factionsx.core.relation.Relation;
 import io.illyria.factionsx.core.relation.RelationParticipator;
-import io.illyria.factionsx.manager.PlayerManager;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -246,7 +246,7 @@ public class Faction implements IFaction {
 
     @Override
     public IFPlayer getLeader() {
-        return PlayerManager.getInstance().getFPlayerById(factionOwnerId);
+        return FactionsX.getFactionsX().getPlayerManager().getById(factionOwnerId);
     }
 
     @Override

@@ -1,46 +1,23 @@
 package io.illyria.factionsx.persistence.json;
 
+import io.illyria.factionsx.BukkitFactionsBootstrap;
+import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.entity.IFaction;
-import io.illyria.factionsx.manager.FactionManager;
+import io.illyria.factionsx.manager.Manager;
 import io.illyria.factionsx.persistence.Persistence;
-import io.illyria.factionsx.persistence.PersistenceEngine;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.io.File;
 
 public final class JsonFaction implements Persistence<IFaction> {
 
     @Override
-    public Optional<IFaction> get(String id) {
-        return Optional.empty();
+    public Manager<IFaction> getManager() {
+        return FactionsX.getFactionsX().getFactionManager();
     }
 
     @Override
-    public Set<IFaction> getAll() {
-        return null;
+    public File getDataFile() {
+        return new File(BukkitFactionsBootstrap.getInstance().getBootstrapDataFolder().getPath() + "/data/factions.json");
     }
 
-    @Override
-    public void load() {
-
-    }
-
-    @Override
-    public void save(final IFaction iFaction) {
-
-    }
-
-    @Override
-    public void saveAll() {
-
-    }
-
-    @Override
-    public void delete(final IFaction iFaction) {
-
-    }
 }
