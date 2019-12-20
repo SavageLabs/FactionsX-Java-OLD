@@ -17,7 +17,7 @@ public class ConfigManager {
     private static ConfigManager configManager;
     private FactionsBootstrap plugin;
 
-    private static Map<String, CustomFile> fileMap = new HashMap<>();
+    private static Map<String, ICustomFile> fileMap = new HashMap<>();
 
     private ConfigManager(FactionsBootstrap plugin) {
         this.plugin = plugin;
@@ -35,13 +35,22 @@ public class ConfigManager {
         return configManager;
     }
 
-    public void addFile(CustomFile file) {
+    private void addFile(CustomFile file) {
         fileMap.put(file.getName(), file);
         file.init();
     }
 
-    public Map<String, CustomFile> getFileMap() {
+    public Map<String, ICustomFile> getFileMap() {
         return fileMap;
+    }
+
+    public File getFileByName(String fileName) {
+        for (ICustomFile file : fileMap.values()) {
+            if (file.getName().equals(fileName)) {
+                return file.getFile();
+            }
+        }
+        return null;
     }
 
 }

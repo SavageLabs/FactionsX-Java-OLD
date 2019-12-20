@@ -13,8 +13,4 @@ public abstract class CustomJsonFile extends CustomFile {
         this.instance = instance;
     }
 
-    public File getConfigFile() {
-        return configFile;
-    }
-
 }

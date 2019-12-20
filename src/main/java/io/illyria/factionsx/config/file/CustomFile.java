@@ -7,8 +7,9 @@ import java.io.IOException;
 
 public abstract class CustomFile implements ICustomFile {
 
+    private File directory;
     public File file;
-    public File configFile;
+
     private FactionsBootstrap instance;
 
     public CustomFile(FactionsBootstrap instance, String parent, String fileExtension) {
@@ -17,24 +18,24 @@ public abstract class CustomFile implements ICustomFile {
             instance.getBootstrapDataFolder().mkdir();
         }
         if (parent != null) {
-            file = new File(instance.getBootstrapDataFolder(), File.separator + parent);
-            if (!file.exists()) {
-                file.mkdir();
+            directory = new File(instance.getBootstrapDataFolder(), File.separator + parent);
+            if (!directory.exists()) {
+                directory.mkdir();
             }
-            configFile = new File(file, getName() + "."+ fileExtension);
+            file = new File(directory, getName() + "."+ fileExtension);
         } else {
-            configFile = new File(getName() + "." + fileExtension);
+            file = new File(getName() + "." + fileExtension);
         }
         try {
-            configFile.createNewFile();
+            file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    public File getConfigFile() {
-        return configFile;
+    public File getFile() {
+        return file;
     }
 
 }
