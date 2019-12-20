@@ -23,6 +23,8 @@ public enum Message {
     COMMAND_REQUIREMENTS_TOOFEWARGS("Command-requirements.not-enough-args", "&7[&4✕&7] &cNot enough arguments specified."),
     COMMAND_REQUIREMENTS_TOOMANYARGS("Command-requirements.too-many-args", "&7[&4✕&7] &cToo many arguments specified."),
 
+    CMD_BASE_HELP("Command.base.help", "&7The base command."),
+
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
     ERROR_HOOK_FAILED("Hooks.generic-hook-failed", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),

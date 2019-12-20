@@ -1,4 +1,4 @@
-package io.illyria.factionsx.command;
+package io.illyria.factionsx.command.engine;
 
 import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.config.Message;

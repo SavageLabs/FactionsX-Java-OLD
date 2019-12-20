@@ -1,11 +1,13 @@
 package io.illyria.factionsx;
 
+import io.illyria.factionsx.command.FBaseCommand;
 import io.illyria.factionsx.core.Permission;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
 import io.illyria.factionsx.utils.hooks.HookManager;
 import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,6 +22,7 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
 
     private static BukkitFactionsBootstrap bukkitFactionsBootstrap;
     private FactionsX factionsX = new FactionsX(this);
+    private FBaseCommand factionsBaseCommand;
 
     private HookManager hookManager;
 
@@ -37,6 +40,11 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
         loadConfig();
         // Register permissions
         Permission.registerAllPermissions(this.getServer().getPluginManager());
+        // Register the command.
+        this.factionsBaseCommand = new FBaseCommand();
+        PluginCommand factionsxCommand = this.getCommand("factionsx");
+        if (factionsxCommand != null) factionsxCommand.setExecutor(factionsBaseCommand);
+        else ChatUtil.sendConsole("Something went wrong, the `factionsx` command could not be found in the plugin.yml.");
     }
 
     @Override

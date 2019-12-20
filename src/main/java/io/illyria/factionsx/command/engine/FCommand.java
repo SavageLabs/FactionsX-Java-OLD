@@ -1,6 +1,6 @@
-package io.illyria.factionsx.command;
+package io.illyria.factionsx.command.engine;
 
-import io.illyria.factionsx.command.argument.Argument;
+import io.illyria.factionsx.command.engine.argument.Argument;
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.utils.ChatUtil;
 import me.rayzr522.jsonmessage.JSONMessage;
@@ -12,12 +12,12 @@ import java.util.stream.Collectors;
 
 public abstract class FCommand {
 
-    public List<String> aliases;
+    public List<String> aliases = new ArrayList<>();
     public CommandRequirements commandRequirements;
     public String prefix;
-    public List<Argument> requiredArgs;
-    public List<Argument> optionalArgs;
-    public List<FCommand> subCommands;
+    public List<Argument> requiredArgs = new ArrayList<>();
+    public List<Argument> optionalArgs = new ArrayList<>();
+    public List<FCommand> subCommands = new ArrayList<>();
     public boolean isBaseCommand;
 
     public FCommand() {
@@ -25,6 +25,8 @@ public abstract class FCommand {
 
 
     public abstract void perform(CommandContext context);
+
+    public abstract String getHelpInfo();
 
     public void execute(CommandContext context) {
         if (context.getArgs().size() > 0) {

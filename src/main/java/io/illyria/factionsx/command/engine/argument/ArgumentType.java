@@ -1,4 +1,4 @@
-package io.illyria.factionsx.command.argument;
+package io.illyria.factionsx.command.engine.argument;
 
 import io.illyria.factionsx.entity.IFPlayer;
 

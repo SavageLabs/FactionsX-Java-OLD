@@ -29,7 +29,7 @@ public enum Permission {
 
 
     public String getFullPermissionNode() {
-        return Config.PERMISSION_ROOT_NAME + "." + this.node;
+        return Config.PERMISSION_ROOT_NAME.getString() + "." + this.node;
     }
 
     public static void registerAllPermissions(PluginManager pluginManager) {

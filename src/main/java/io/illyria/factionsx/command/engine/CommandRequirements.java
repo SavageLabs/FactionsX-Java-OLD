@@ -1,4 +1,4 @@
-package io.illyria.factionsx.command;
+package io.illyria.factionsx.command.engine;
 
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.core.Permission;
@@ -29,8 +29,9 @@ public class CommandRequirements {
 
         // Assume its player since we approved console above.
         Player player = (Player) context.getCommandSender();
-        if (permission != null && !Permission.hasPermission(player, permission, !informIfNot)) {
-          return false;
+        if (permission != null && !Permission.hasPermission(player, permission, true)) {
+            context.message(Message.GENERAL_NOPERMISSION_SPECIFIC.getMessage().replace("{perm}", permission.getFullPermissionNode()));
+            return false;
         }
 
         if (asFactionMember) {
@@ -44,6 +45,7 @@ public class CommandRequirements {
     }
 
     public static class Builder {
+
 
         private Permission permission;
         private boolean asPlayer;
