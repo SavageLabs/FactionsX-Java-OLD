@@ -27,6 +27,11 @@ public enum Message {
 
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
+    ERROR_FILE_IO("File.io-error", "&7[&4✕&7] &cCould not write file {file}! &eCaused by IO Exception."),
+    ERROR_FILE_LOAD("File.invalid-format", "&7[&4✕&7] &cCould not write file {file}! &eInvalid formatting."),
+
+    ERROR_BACKEND_INVALID("Database.invalid-type-selected", "&7[&4✕&7] &cDATABASE TYPE '&e{type}&c' DOES NOT EXIST! &eSetting Default Database type... &cCHECK &eCONFIG.YML&c FILE."),
+
     ERROR_HOOK_FAILED("Hooks.generic-hook-failed", "&7[&4✕&7] &cCould not hook to {plugin}. {plugin} support is disabled"),
     ERROR_ECON_INVALID("Hooks.economy-hook-failed", "&7[&4✕&7] &cEconomy support has been disabled! Error while hooking to Vault, or no Economy Service was found!"),
     ERROR_ESSENTIALS_INVALID("Hooks.essentials-hook-failed", "&7[&4✕&7] &cEssentials support has been disabled! Error while hooking to Essentials, or you may have an outdated version! &eOnly EssentialsX is supported, you can download it from here -> https://www.spigotmc.org/resources/essentialsx.9089/"),
@@ -35,6 +40,7 @@ public enum Message {
     PERMISSIONS_NOPERMISSION("Permissions.no-permission", "&7[&4✕&7] &cYou do not have the permission node \"%1$s\" required to do that"),
 
     PAPI_ERROR("Placeholder.generic-error", "&c&oerror"),
+    ERROR_PAPI_INVALID("Hooks.placeholder-generic-error", "&c&oError"),
 
     TIME_DAYS("Time.days", "days"),
     TIME_DAY("Time.day", "day"),

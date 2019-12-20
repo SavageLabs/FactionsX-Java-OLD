@@ -1,18 +1,18 @@
 package io.illyria.factionsx.config.file;
 
 import io.illyria.factionsx.internal.FactionsBootstrap;
-import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
 
 public abstract class CustomFile implements ICustomFile {
 
-    private YamlConfiguration config;
-    private File file;
-    private File configFile;
+    public File file;
+    public File configFile;
+    private FactionsBootstrap instance;
 
-    public CustomFile(FactionsBootstrap instance, String parent) {
+    public CustomFile(FactionsBootstrap instance, String parent, String fileExtension) {
+        this.instance = instance;
         if (!instance.getBootstrapDataFolder().exists()) {
             instance.getBootstrapDataFolder().mkdir();
         }
@@ -21,37 +21,20 @@ public abstract class CustomFile implements ICustomFile {
             if (!file.exists()) {
                 file.mkdir();
             }
-            configFile = new File(file, getName() + ".yml");
+            configFile = new File(file, getName() + "."+ fileExtension);
         } else {
-            configFile = new File(getName() + ".yml");
+            configFile = new File(getName() + "." + fileExtension);
         }
         try {
             configFile.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        reloadConfig();
-    }
 
-    public void reloadConfig() {
-        config = YamlConfiguration.loadConfiguration(configFile);
-    }
-
-    public void saveConfig() {
-        try {
-            config.save(configFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public File getConfigFile() {
         return configFile;
     }
-
-    public YamlConfiguration getConfig() {
-        return config;
-    }
-
 
 }

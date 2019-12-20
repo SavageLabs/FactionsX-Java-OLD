@@ -66,7 +66,7 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
         if (s.equalsIgnoreCase("version")) {
             return getVersion();
         }
-        return Message.PAPI_ERROR.getMessage();
+        return Message.ERROR_PAPI_INVALID.getMessage();
     }
 
     public static PlaceholderAPIHook getPapiExt() {

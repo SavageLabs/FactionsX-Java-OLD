@@ -1,17 +1,29 @@
 package io.illyria.factionsx;
 
 import io.illyria.factionsx.command.FBaseCommand;
+import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.core.Permission;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 import io.illyria.factionsx.utils.ChatUtil;
+import io.illyria.factionsx.utils.DiskUtil;
 import io.illyria.factionsx.utils.hooks.HookManager;
 import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
+
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Here is the bukkit implementation of Factions plugin.
@@ -32,12 +44,12 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
         printLogo();
         // Suggest using Paper for better performance
         PaperLib.suggestPaper(this);
+        // Load configs
+        loadConfig();
         factionsX.enable();
         // Load hooks
         hookManager = HookManager.getInstance();
         hookManager.loadHooks();
-        // Load configs
-        loadConfig();
         // Register permissions
         Permission.registerAllPermissions(this.getServer().getPluginManager());
         // Register the command.
@@ -70,7 +82,7 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
 
     public void loadConfig() {
         factionsX.getConfigManager().getFileMap().get("config").init();
-        factionsX.getConfigManager().getFileMap().get("messages").init();
+        factionsX.getConfigManager().getFileMap().get("messages_" + Config.LOCALE.getString()).init();
     }
 
     private void registerListeners(Listener... listeners) {
@@ -92,8 +104,8 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
             "⬜⬛⬜⬜⬜⬜⬛⬛⬜⬜⬛⬜⬜⬛⬜⬜⬛⬜⬜⬜⬛⬜⬜⬜⬜⬛⬜⬜⬛⬜⬛⬛⬜⬛⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜⬜⬜⬛⬛⬜⬛⬛⬜⬜⬜\n" +
             "⬜⬛⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬛⬛⬛⬛⬜⬜⬜⬛⬜⬜⬜⬛⬛⬛⬜⬛⬛⬛⬜⬜⬛⬛⬜⬜⬛⬜⬛⬛⬛⬜⬜⬜⬜⬛⬛⬜⬜⬜⬛⬛⬜⬜\n" +
             "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬛⬛⬛\n"
-        ).replace("⬜","&0▉").replace("⬛","&f▉"));
-        ChatUtil.sendConsole("&f➜ &eMade with &4❤ &eby the&f illyria.io Team\n");
+        ).replace("⬜","&0█").replace("⬛","&f█"));
+        ChatUtil.sendConsole("\n&f&l> &eMade with &4♥ &eby the&f illyria.io Team\n");
     }
     //@formatter:on
 
