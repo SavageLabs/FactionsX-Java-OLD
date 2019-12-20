@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public abstract class CustomYamlFile extends CustomFile {
 
-    private YamlConfiguration config;
+    protected YamlConfiguration config;
     protected FactionsBootstrap instance;
 
     public CustomYamlFile(FactionsBootstrap instance, String parent) {
@@ -17,21 +17,17 @@ public abstract class CustomYamlFile extends CustomFile {
         config = new YamlConfiguration();
     }
 
-    public File getConfigFile() {
-        return configFile;
-    }
-
     public YamlConfiguration getConfig() {
         return config;
     }
 
     public void reloadConfig() {
-        config = YamlConfiguration.loadConfiguration(configFile);
+        config = YamlConfiguration.loadConfiguration(this.getFile());
     }
 
     public void saveConfig() {
         try {
-            config.save(configFile);
+            config.save(this.getFile());
         } catch (IOException e) {
             e.printStackTrace();
         }

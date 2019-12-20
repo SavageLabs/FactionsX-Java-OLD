@@ -3,6 +3,7 @@ package io.illyria.factionsx.config.file.types;
 import io.illyria.factionsx.config.Config;
 import io.illyria.factionsx.config.file.CustomFile;
 import io.illyria.factionsx.config.file.CustomYamlFile;
+import io.illyria.factionsx.config.file.ICustomFile;
 import io.illyria.factionsx.internal.FactionsBootstrap;
 
 public class ConfigFile extends CustomYamlFile {
@@ -31,7 +32,8 @@ public class ConfigFile extends CustomYamlFile {
         saveConfig();
     }
 
-    public ConfigFile init() {
+    @Override
+    public ICustomFile init() {
         this.reloadConfig();
         for (Config message : Config.values()) {
             if (message.getStrings() != null) {

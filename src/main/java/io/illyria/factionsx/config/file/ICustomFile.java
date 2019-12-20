@@ -1,9 +1,13 @@
 package io.illyria.factionsx.config.file;
 
-public interface ICustomFile<T> {
+import java.io.File;
 
-    T init();
+public interface ICustomFile {
+
+    ICustomFile init();
 
     String getName();
+
+    File getFile();
 
 }
