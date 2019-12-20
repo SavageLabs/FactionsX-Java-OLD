@@ -1,46 +1,55 @@
 package io.illyria.factionsx.persistence.json;
 
+import com.google.gson.reflect.TypeToken;
+import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.entity.IFaction;
-import io.illyria.factionsx.manager.FactionManager;
+import io.illyria.factionsx.manager.Manager;
 import io.illyria.factionsx.persistence.Persistence;
-import io.illyria.factionsx.persistence.PersistenceEngine;
+import io.illyria.factionsx.utils.DiskUtil;
 
-import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public final class JsonFaction implements Persistence<IFaction> {
 
     @Override
-    public Optional<IFaction> get(String id) {
-        return Optional.empty();
+    public Manager<IFaction> getManager() {
+        return FactionsX.getFactionsX().getFactionManager();
     }
 
     @Override
     public Set<IFaction> getAll() {
-        return null;
-    }
 
-    @Override
-    public void load() {
+        String dataText = "";
 
-    }
+        try {
+            //TODO: Change this
+            dataText = DiskUtil.read(new File("./data/factions.json"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-    @Override
-    public void save(final IFaction iFaction) {
+        return ((Json) getDispatcher()).getGson().fromJson(dataText, new TypeToken<Set<IFaction>>(){}.getType());
 
     }
 
     @Override
     public void saveAll() {
 
+        Set<IFaction> factionsToSave = new HashSet<>();
+
+        for (IFaction faction : getManager().getAll()) {
+            factionsToSave.add(faction);
+        }
+
+        try {
+            //TODO: Change this.
+            DiskUtil.write(new File("./data/factions.json"), ((Json) getDispatcher()).getGson().toJson(factionsToSave));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    @Override
-    public void delete(final IFaction iFaction) {
-
-    }
 }

@@ -66,4 +66,10 @@ public final class PlayerManager extends AbstractManager<IFPlayer> {
     public void load() {
         fPlayers = persistenceEngine.getfPlayerPersistence().getAll();
     }
+
+    public IFPlayer getFPlayer(Player player) {
+        if (player == null) return null;
+        return getById(player.getUniqueId().toString());
+    }
+
 }

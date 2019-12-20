@@ -1,5 +1,6 @@
 package io.illyria.factionsx.entity;
 
+import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.core.Role;
 import io.illyria.factionsx.manager.FactionManager;
 import io.illyria.factionsx.utils.hooks.Econ;
@@ -61,7 +62,7 @@ public class FPlayer implements IFPlayer {
 
     @Override
     public IFaction getFaction() {
-        return FactionManager.getInstance().getFactionById(factionId);
+        return FactionsX.getFactionsX().getFactionManager().getById(factionId);
     }
 
     @Override

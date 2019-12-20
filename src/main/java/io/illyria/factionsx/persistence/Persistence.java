@@ -1,20 +1,20 @@
 package io.illyria.factionsx.persistence;
 
+import io.illyria.factionsx.manager.Manager;
+
 import java.util.Optional;
 import java.util.Set;
 
 public interface Persistence<T> {
 
-    Optional<T> get(String id);
+    Manager<T> getManager();
+
+    default Dispatcher getDispatcher() {
+        return PersistenceEngine.getInstance().getDispatcher();
+    }
 
     Set<T> getAll();
 
-    void load();
-
-    void save(final T t);
-
     void saveAll();
-
-    void delete(final T t);
 
 }
