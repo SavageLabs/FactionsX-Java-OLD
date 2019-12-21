@@ -1,4 +1,4 @@
-package io.illyria.factionsx.command;
+package io.illyria.factionsx.command.engine;
 
 import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.config.Message;
@@ -76,5 +76,13 @@ public class CommandContext {
     public void message(String message) {
         commandSender.sendMessage(ChatUtil.color(message));
     }
+
+    public List<String> getArgs() { return this.args; }
+
+    public IFPlayer getFPlayer() { return this.fPlayer; }
+
+    public Player getPlayer() { return this.player; }
+
+    public CommandSender getCommandSender() { return this.commandSender; }
 
 }

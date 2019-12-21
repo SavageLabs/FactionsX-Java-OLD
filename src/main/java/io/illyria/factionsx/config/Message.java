@@ -17,6 +17,14 @@ public enum Message {
     COMMAND_PARSING_CANNOTREFERENCEYOURSELF("Command-parsing.cannot-reference-yourself","&7[&4✕&7] &cYou cannot reference yourself."),
     COMMAND_PARSING_ARGISNOTINT("Command-parsing.arg-is-not-int", "&7[&4✕&7] &cThe specified argument is not an integer."),
 
+    COMMAND_REQUIREMENTS_NOTPLAYER("Command-requirements.not-player", "&7[&4✕&7] &cYou need to be a player to execute this command."),
+    COMMAND_REQUIREMENTS_NOTFACTIONMEMBER("Command-requirements.not-faction-member", "&7[&4✕&7] &cYou need to be a faction member to execute this command."),
+    COMMAND_REQUIREMENTS_NOTLEADER("Command-requirements.not-faction-leader", "&7[&4✕&7] &cYou need to be a faction leader to execute this command."),
+    COMMAND_REQUIREMENTS_TOOFEWARGS("Command-requirements.not-enough-args", "&7[&4✕&7] &cNot enough arguments specified."),
+    COMMAND_REQUIREMENTS_TOOMANYARGS("Command-requirements.too-many-args", "&7[&4✕&7] &cToo many arguments specified."),
+
+    CMD_BASE_HELP("Command.base.help", "&7The base command."),
+
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 
     ERROR_FILE_IO("File.io-error", "&7[&4✕&7] &cCould not write file {file}! &eCaused by IO Exception."),
@@ -28,6 +36,10 @@ public enum Message {
     ERROR_ECON_INVALID("Hooks.economy-hook-failed", "&7[&4✕&7] &cEconomy support has been disabled! Error while hooking to Vault, or no Economy Service was found!"),
     ERROR_ESSENTIALS_INVALID("Hooks.essentials-hook-failed", "&7[&4✕&7] &cEssentials support has been disabled! Error while hooking to Essentials, or you may have an outdated version! &eOnly EssentialsX is supported, you can download it from here -> https://www.spigotmc.org/resources/essentialsx.9089/"),
     ERROR_DYNMAP_INVALID("Hooks.dynmap-hook-failed", "&7[&4✕&7] &cDynmap support has been disabled! Error while trying to get DynmapAPI"),
+
+    PERMISSIONS_NOPERMISSION("Permissions.no-permission", "&7[&4✕&7] &cYou do not have the permission node \"%1$s\" required to do that"),
+
+    PAPI_ERROR("Placeholder.generic-error", "&c&oerror"),
     ERROR_PAPI_INVALID("Hooks.placeholder-generic-error", "&c&oError"),
 
     TIME_DAYS("Time.days", "days"),
