@@ -33,6 +33,9 @@ public final class FactionsX {
         persistenceEngine = PersistenceEngine.getInstance();
         playerManager = new PlayerManager();
         factionManager = new FactionManager();
+
+        factionManager.load();
+        playerManager.load();
     }
 
     public void disable() {
