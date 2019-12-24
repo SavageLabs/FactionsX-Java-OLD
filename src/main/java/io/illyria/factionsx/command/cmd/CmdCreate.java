@@ -25,7 +25,7 @@ public class CmdCreate extends FCommand {
 
     @Override
     public void perform(CommandContext context) {
-        IFaction faction = context.getFactionManager().createFaction(context.getArgs().get(0), context.getPlayer().getName());
+        IFaction faction = context.getFactionManager().createFaction(context.getArgs().get(0), context.getPlayer().getUniqueId().toString());
         context.message(Message.CMD_CREATE_SUCCESS.getMessage());
         Bukkit.broadcastMessage(ChatUtil.color(String.format(Message.CMD_CREATE_ANNOUNCEMENT.getMessage(), context.getPlayer().getName(), faction.getName())));
 

@@ -13,6 +13,7 @@ public class DiskUtil {
 	 * @return The entire to string.
 	 */
     public static String read(File file) throws IOException {
+        if (readFile(file) == null) return "";
         return new String(readFile(file), StandardCharsets.UTF_8);
     }
 
@@ -52,6 +53,8 @@ public class DiskUtil {
     private static byte[] readFile(File file) throws IOException, FileNotFoundException {
         FileInputStream fileInputStream = new FileInputStream(file);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        if (file.length() == 0) return null;
 
         byte[] buffer = new byte[(int) file.length()];
         int read;

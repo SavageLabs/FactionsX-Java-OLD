@@ -22,7 +22,8 @@ public final class JsonFaction implements Persistence<IFaction> {
 
     @Override
     public Set<IFaction> getAll() {
-        String dataText = "";
+        String dataText = null;
+        Set<IFaction> factions;
 
         try {
             dataText = DiskUtil.read(getDataFile());
@@ -30,7 +31,9 @@ public final class JsonFaction implements Persistence<IFaction> {
             e.printStackTrace();
         }
 
-        return ((Json) getDispatcher()).getGson().fromJson(dataText, new TypeToken<Set<IFaction>>(){}.getType());
+        factions = ((Json) getDispatcher()).getGson().fromJson(dataText, new TypeToken<Set<IFaction>>(){}.getType());
+
+       return  factions;
     }
 
     @Override

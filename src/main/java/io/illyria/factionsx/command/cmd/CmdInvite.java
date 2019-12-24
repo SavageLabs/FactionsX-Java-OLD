@@ -32,8 +32,6 @@ public class CmdInvite extends FCommand {
         IFPlayer fPlayer = FactionsX.getFactionsX().getPlayerManager().getFPlayer(context.getPlayer());
         context.getFPlayer().getFaction().invitePlayer(fPlayer);
         context.message(Message.CMD_INVITE_SUCCESS.getMessage());
-
-
     }
 
     @Override
