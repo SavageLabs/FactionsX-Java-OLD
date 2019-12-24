@@ -15,6 +15,7 @@ public enum Message {
 
     COMMAND_PARSING_PLAYERNOTFOUND("Command-parsing.player-not-found", "&7[&4✕&7] &cPlayer was not found."),
     COMMAND_PARSING_CANNOTREFERENCEYOURSELF("Command-parsing.cannot-reference-yourself","&7[&4✕&7] &cYou cannot reference yourself."),
+    COMMAND_PARSING_FACTIONNOTFOUND("Command-parsing.faction-not-found", "&7[&4✕&7] &cFaction was not found"),
     COMMAND_PARSING_ARGISNOTINT("Command-parsing.arg-is-not-int", "&7[&4✕&7] &cThe specified argument is not an integer."),
 
     COMMAND_REQUIREMENTS_NOTPLAYER("Command-requirements.not-player", "&7[&4✕&7] &cYou need to be a player to execute this command."),
@@ -24,6 +25,17 @@ public enum Message {
     COMMAND_REQUIREMENTS_TOOMANYARGS("Command-requirements.too-many-args", "&7[&4✕&7] &cToo many arguments specified."),
 
     CMD_BASE_HELP("Command.base.help", "&7The base command."),
+
+    CMD_CREATE_HELP("Command.create.help", "&7create a faction."),
+    CMD_CREATE_SUCCESS("Command.create.success", "&7Faction created."),
+    CMD_CREATE_ANNOUNCEMENT("Command.create.announcement", "&7%1$s created a faction called %2$s."),
+
+    CMD_INVITE_SUCCESS("Command.invite.success", "&7You have invited %1$s to your faction"),
+    CMD_INVITE_HELP("Command.invite.help", "invite a player to your faction."),
+
+    CMD_JOIN_NOTINVITED("Command.join.not-invited", "&7You are not invited to %1$s"),
+    CMD_JOIN_SUCCESS("Command.join.success", "&7You have successfully joined this faction"),
+    CMD_JOIN_HELP("Command.join.help", "join a faction."),
 
     CMD_RELOAD_SUCCESS("Command.reload-success", "&7[&a✔&7] &aConfig and Messages Reloaded!"),
 

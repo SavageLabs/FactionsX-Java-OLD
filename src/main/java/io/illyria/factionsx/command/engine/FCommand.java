@@ -18,11 +18,8 @@ public abstract class FCommand {
     public List<Argument> requiredArgs = new ArrayList<>();
     public List<Argument> optionalArgs = new ArrayList<>();
     public List<FCommand> subCommands = new ArrayList<>();
+    // Bool is false when not defined.
     public boolean isBaseCommand;
-
-    public FCommand() {
-    }
-
 
     public abstract void perform(CommandContext context);
 

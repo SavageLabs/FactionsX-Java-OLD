@@ -40,9 +40,10 @@ public final class FactionManager extends AbstractManager<IFaction> {
         persistenceEngine.getFactionPersitence().saveAll();
     }
 
-    public void createFaction(String factionName, String ownerName) {
+    public IFaction createFaction(String factionName, String ownerName) {
         IFaction faction = new Faction(generateFactionId(), factionName, ownerName);
         factions.add(faction);
+        return faction;
     }
 
     private String generateFactionId() {

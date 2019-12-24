@@ -1,6 +1,8 @@
 package io.illyria.factionsx.command;
 
-import io.illyria.factionsx.command.cmd.CmdTest;
+import io.illyria.factionsx.command.cmd.CmdCreate;
+import io.illyria.factionsx.command.cmd.CmdInvite;
+import io.illyria.factionsx.command.cmd.CmdJoin;
 import io.illyria.factionsx.command.engine.CommandContext;
 import io.illyria.factionsx.command.engine.CommandRequirements;
 import io.illyria.factionsx.command.engine.FCommand;
@@ -18,7 +20,9 @@ public class FBaseCommand extends FCommand implements CommandExecutor {
     public FBaseCommand() {
         this.prefix = "f";
         this.commandRequirements = new CommandRequirements.Builder().build();
-        super.subCommands.add(new CmdTest());
+        super.subCommands.add(new CmdCreate());
+        super.subCommands.add(new CmdInvite());
+        super.subCommands.add(new CmdJoin());
 
     }
 

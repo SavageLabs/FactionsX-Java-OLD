@@ -3,8 +3,10 @@ package io.illyria.factionsx.command.engine;
 import io.illyria.factionsx.FactionsX;
 import io.illyria.factionsx.config.Message;
 import io.illyria.factionsx.entity.FPlayer;
+import io.illyria.factionsx.entity.Faction;
 import io.illyria.factionsx.entity.IFPlayer;
 import io.illyria.factionsx.entity.IFaction;
+import io.illyria.factionsx.manager.FactionManager;
 import io.illyria.factionsx.utils.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -49,6 +51,12 @@ public class CommandContext {
         return FactionsX.getFactionsX().getPlayerManager().getFPlayer(player);
     }
 
+    public IFaction getArgAsFaction(int index, boolean informIfNot) {
+        IFaction faction = getFactionManager().getByName(getArgs().get(index));
+        if (faction == null && informIfNot) this.message(Message.COMMAND_PARSING_FACTIONNOTFOUND.getMessage());
+        return faction;
+    }
+
     // Uses boxed so user can actually check if the result is null.
     public Integer getArgAsInt(int index, boolean informIfNot) {
         try {
@@ -68,6 +76,11 @@ public class CommandContext {
         if (rawBoolean.equals("false") || rawBoolean.equals("0")) { return false; }
         return null;
     }
+
+    public FactionManager getFactionManager() {
+        return FactionsX.getFactionsX().getFactionManager();
+    }
+
 
     public boolean isPlayer() {
         return player != null;

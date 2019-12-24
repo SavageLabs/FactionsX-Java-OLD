@@ -2,12 +2,12 @@ package io.illyria.factionsx.command.engine.argument;
 
 import io.illyria.factionsx.entity.IFPlayer;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
-public class StringArgument extends ArgumentType {
+public class BooleanArgumentType extends ArgumentType {
     @Override
     public List<String> getPossibleValues(IFPlayer fPlayer) {
-        return Collections.emptyList();
+        return Arrays.asList("true", "false");
     }
 }

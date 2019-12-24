@@ -6,6 +6,7 @@ import io.illyria.factionsx.core.Role;
 import io.illyria.factionsx.core.relation.Relation;
 import io.illyria.factionsx.core.relation.RelationParticipator;
 
+import java.beans.Transient;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
@@ -30,7 +31,7 @@ public class Faction implements IFaction {
     private Map<RelationParticipator, Relation> pendingRelationRequests;
     private Map<RelationParticipator, Relation> relations;
     private Map<RelationParticipator, Relation> relationsWish;
-    private Set<IFPlayer> invites;
+    private transient Set<IFPlayer> invites;
 
     public Faction() {}
 

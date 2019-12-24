@@ -13,7 +13,10 @@ import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public enum Permission {
-    EXAMPLE("example", "just an example placeholder", PermissionDefault.FALSE);
+    EXAMPLE("example", "just an example placeholder", PermissionDefault.FALSE),
+    CREATE("create", "create a faction", PermissionDefault.TRUE),
+    JOIN("join", "join a faction", PermissionDefault.TRUE),
+    INVITE("invite", "invite someone to a faction", PermissionDefault.TRUE);
 
 
     private final String node;
