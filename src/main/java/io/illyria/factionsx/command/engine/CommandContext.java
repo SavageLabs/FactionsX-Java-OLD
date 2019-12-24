@@ -94,6 +94,8 @@ public class CommandContext {
 
     public IFPlayer getFPlayer() { return this.fPlayer; }
 
+    public IFaction getFaction() { return this.fPlayer.getFaction(); }
+
     public Player getPlayer() { return this.player; }
 
     public CommandSender getCommandSender() { return this.commandSender; }

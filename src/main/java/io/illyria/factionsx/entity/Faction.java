@@ -168,16 +168,13 @@ public class Faction implements IFaction {
     public void kickPlayer(IFPlayer player) {
         this.factionPlayers.remove(player);
         this.invites.remove(player);
+        player.setFaction(FactionsX.getFactionsX().getFactionManager().getById("1"));
     }
 
     @Override
     public void banPlayer(IFPlayer player) {
-        if (bannedPlayers.contains(player)) {
-            //TODO...
-        } else {
-            kickPlayer(player);
-            this.getBannedPlayers().add(player);
-        }
+        kickPlayer(player);
+        this.getBannedPlayers().add(player);
     }
 
     @Override
@@ -218,6 +215,7 @@ public class Faction implements IFaction {
     @Override
     public void addPlayer(IFPlayer player) {
         this.factionPlayers.add(player);
+        player.setFaction(this);
     }
 
     @Override
