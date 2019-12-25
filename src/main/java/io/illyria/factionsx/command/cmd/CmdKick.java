@@ -28,7 +28,7 @@ public class CmdKick extends FCommand {
         if (player == null) return;
         IFPlayer fPlayer = FactionsX.getFactionsX().getPlayerManager().getFPlayer(player);
         context.getFPlayer().getFaction().kickPlayer(fPlayer);
-        context.message(Message.CMD_KICK_SUCCESS.getMessage());
+        context.message(String.format(Message.CMD_KICK_SUCCESS.getMessage(), player.getName()));
     }
 
     @Override

@@ -31,7 +31,11 @@ public enum Message {
     CMD_CREATE_ANNOUNCEMENT("Command.create.announcement", "&7%1$s created a faction called %2$s."),
 
     CMD_INVITE_SUCCESS("Command.invite.success", "&7You have invited %1$s to your faction"),
-    CMD_INVITE_HELP("Command.invite.help", "invite a player to your faction."),
+    CMD_INVITE_HELP("Command.invite.help", "invite a member to your faction."),
+
+
+    CMD_KICK_SUCCESS("Command.kick.success", "&7Successfully kicked %1$s from faction."),
+    CMD_KICK_HELP("Command.invite.help", "kick a player from your faction."),
 
     CMD_JOIN_NOTINVITED("Command.join.not-invited", "&7You are not invited to %1$s"),
     CMD_JOIN_SUCCESS("Command.join.success", "&7You have successfully joined this faction"),
