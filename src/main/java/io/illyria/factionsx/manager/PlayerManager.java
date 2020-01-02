@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public final class PlayerManager extends AbstractManager<IFPlayer> {
 
@@ -44,7 +45,7 @@ public final class PlayerManager extends AbstractManager<IFPlayer> {
         }
 
         if (fPlayer == null) {
-            fPlayer = createFplayer(Bukkit.getPlayer(id));
+            fPlayer = createFplayer(Bukkit.getPlayer(UUID.fromString(id)));
             fPlayers.add(fPlayer);
         }
 
