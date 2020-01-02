@@ -17,6 +17,7 @@ public final class FactionManager extends AbstractManager<IFaction> {
 
     @Override
     public Set<IFaction> getAll() {
+        if (factions == null) return new HashSet<>();
         return factions;
     }
 
@@ -27,7 +28,7 @@ public final class FactionManager extends AbstractManager<IFaction> {
 
     @Override
     public IFaction getById(String id) {
-        return this.getAll().stream().parallel().filter(faction -> faction.getId().equals(id)).findFirst().orElse(null);
+        return this.getAll().parallelStream().filter(faction -> faction.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override
