@@ -28,8 +28,8 @@ public class CommandContext {
         this.args = args;
         this.aliasUsed = aliasUsed;
         if (commandSender instanceof Player) { this.player = (Player) commandSender; }
-        if (commandSender instanceof FPlayer && this.player != null) { this.fPlayer = FactionsX.getFactionsX().getPlayerManager().getFPlayer(player); }
-        if (commandSender instanceof FPlayer && this.player != null) { this.faction = this.fPlayer.getFaction(); }
+        if (this.player != null) { this.fPlayer = FactionsX.getFactionsX().getPlayerManager().getFPlayer(player); }
+        if (this.player != null) { this.faction = this.fPlayer.getFaction(); }
     }
 
     public boolean isBypassing() {
