@@ -42,6 +42,7 @@ public final class FactionManager extends AbstractManager<IFaction> {
 
     public IFaction createFaction(String factionName, String ownerName) {
         IFaction faction = new Faction(generateFactionId(), factionName, ownerName);
+        if (factions == null) factions = new HashSet<>();
         factions.add(faction);
         return faction;
     }
