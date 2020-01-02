@@ -39,6 +39,9 @@ public final class BukkitFactionsBootstrap extends JavaPlugin implements Faction
         hookManager.loadHooks();
         // Register permissions
         Permission.registerAllPermissions(this.getServer().getPluginManager());
+        factionsBaseCommand = new FBaseCommand();
+        getCommand("factionsx").setExecutor(factionsBaseCommand);
+
     }
 
     @Override
